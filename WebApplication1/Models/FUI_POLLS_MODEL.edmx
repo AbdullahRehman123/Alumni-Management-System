@@ -1,0 +1,1082 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FUI_POLLModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="alumni_admin">
+          <Key>
+            <PropertyRef Name="adm_id" />
+          </Key>
+          <Property Name="adm_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="adm_guid" Type="uniqueidentifier" />
+          <Property Name="adm_name" Type="varchar(max)" />
+          <Property Name="adm_email" Type="varchar(max)" />
+          <Property Name="adm_password" Type="varchar(max)" />
+          <Property Name="is_active" Type="bit" />
+          <Property Name="campus" Type="varchar" MaxLength="50" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="created_by" Type="varchar" MaxLength="50" />
+          <Property Name="updated_at" Type="datetime" />
+          <Property Name="updated_by" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="candidate">
+          <Key>
+            <PropertyRef Name="candidate_id" />
+          </Key>
+          <Property Name="election_title" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="category_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="image" Type="varchar(max)" Nullable="false" />
+          <Property Name="grad_dept" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="grad_year" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="indust_org_working" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="exper_years" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="town_city_province" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="message_to_voter" Type="varchar(max)" Nullable="false" />
+          <Property Name="education" Type="varchar(max)" Nullable="false" />
+          <Property Name="experience_details" Type="varchar(max)" Nullable="false" />
+          <Property Name="candidate_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="category_name" />
+          </Key>
+          <Property Name="category_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="category_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="election">
+          <Key>
+            <PropertyRef Name="election_title" />
+          </Key>
+          <Property Name="election_title" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="start_date_time" Type="datetime" Nullable="false" />
+          <Property Name="end_date_time" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="job_post">
+          <Key>
+            <PropertyRef Name="job_post_id" />
+          </Key>
+          <Property Name="job_post_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="100" />
+          <Property Name="category" Type="varchar" MaxLength="100" />
+          <Property Name="post_type" Type="varchar" MaxLength="100" />
+          <Property Name="location" Type="varchar" MaxLength="100" />
+          <Property Name="description" Type="varchar(max)" />
+          <Property Name="salary" Type="varchar" MaxLength="100" />
+          <Property Name="tags" Type="varchar" MaxLength="100" />
+          <Property Name="image_path" Type="varchar" MaxLength="100" />
+          <Property Name="campus" Type="varchar(max)" />
+          <Property Name="created_at" Type="date" />
+          <Property Name="created_by" Type="varchar(max)" />
+          <Property Name="updated_at" Type="date" />
+          <Property Name="updated_by" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="member">
+          <Key>
+            <PropertyRef Name="member_id" />
+          </Key>
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="mobile_no" Type="varchar" MaxLength="50" />
+          <Property Name="ip_address" Type="varchar" MaxLength="50" />
+          <Property Name="headers" Type="varchar(max)" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="created_by" Type="varchar" MaxLength="50" />
+          <Property Name="updated_at" Type="datetime" />
+          <Property Name="updated_by" Type="varchar" MaxLength="50" />
+          <Property Name="member_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="already_voted" Type="bit" />
+          <Property Name="password" Type="varchar" MaxLength="50" />
+          <Property Name="confirm_password" Type="varchar" MaxLength="50" />
+          <Property Name="registration_no" Type="varchar" MaxLength="50" />
+          <Property Name="degree_completion_date" Type="date" />
+          <Property Name="campus" Type="varchar" MaxLength="50" />
+          <Property Name="program_studied" Type="varchar" MaxLength="100" />
+          <Property Name="org_comp_working_in" Type="varchar" MaxLength="50" />
+          <Property Name="designation" Type="varchar" MaxLength="50" />
+          <Property Name="validation_status" Type="int" Nullable="false" />
+          <Property Name="category_studied" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FUI_ALUMNI.dbo.member_candidate' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="member_candidate">
+          <Key>
+            <PropertyRef Name="member_id" />
+            <PropertyRef Name="candidate_id" />
+            <PropertyRef Name="created_at" />
+            <PropertyRef Name="created_by" />
+          </Key>
+          <Property Name="member_id" Type="int" Nullable="false" />
+          <Property Name="candidate_id" Type="int" Nullable="false" />
+          <Property Name="created_at" Type="datetime" Nullable="false" />
+          <Property Name="created_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="updated_at" Type="datetime" />
+          <Property Name="updated_by" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="news">
+          <Key>
+            <PropertyRef Name="news_id" />
+          </Key>
+          <Property Name="news_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="news_guid" Type="uniqueidentifier" />
+          <Property Name="news_title" Type="varchar(max)" />
+          <Property Name="news_date" Type="date" />
+          <Property Name="news_details" Type="varchar(max)" />
+          <Property Name="campus" Type="varchar(max)" />
+          <Property Name="news_image" Type="varchar(max)" />
+          <Property Name="news_link" Type="varchar(max)" />
+          <Property Name="news_expir_date" Type="date" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="created_by" Type="varchar" MaxLength="50" />
+          <Property Name="updated_at" Type="datetime" />
+          <Property Name="updated_by" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="upcoming_event">
+          <Key>
+            <PropertyRef Name="event_id" />
+          </Key>
+          <Property Name="event_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="event_guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="event_date_time" Type="datetime" />
+          <Property Name="event_title" Type="varchar(max)" />
+          <Property Name="event_details" Type="varchar(max)" />
+          <Property Name="campus" Type="varchar(max)" />
+          <Property Name="event_link" Type="varchar(max)" />
+          <Property Name="event_expir_date" Type="date" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="created_by" Type="varchar" MaxLength="50" />
+          <Property Name="updated_at" Type="datetime" />
+          <Property Name="updated_by" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="validation_status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="status" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_candidate_category">
+          <End Role="category" Type="Self.category" Multiplicity="1" />
+          <End Role="candidate" Type="Self.candidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="category_name" />
+            </Principal>
+            <Dependent Role="candidate">
+              <PropertyRef Name="category_name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_candidate_election">
+          <End Role="election" Type="Self.election" Multiplicity="1" />
+          <End Role="candidate" Type="Self.candidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="election">
+              <PropertyRef Name="election_title" />
+            </Principal>
+            <Dependent Role="candidate">
+              <PropertyRef Name="election_title" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_member_candidate_candidate">
+          <End Role="candidate" Type="Self.candidate" Multiplicity="1" />
+          <End Role="member_candidate" Type="Self.member_candidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="candidate">
+              <PropertyRef Name="candidate_id" />
+            </Principal>
+            <Dependent Role="member_candidate">
+              <PropertyRef Name="candidate_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_member_candidate_member">
+          <End Role="member" Type="Self.member" Multiplicity="1" />
+          <End Role="member_candidate" Type="Self.member_candidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="member">
+              <PropertyRef Name="member_id" />
+            </Principal>
+            <Dependent Role="member_candidate">
+              <PropertyRef Name="member_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_member_validation_status">
+          <End Role="validation_status" Type="Self.validation_status" Multiplicity="1" />
+          <End Role="member" Type="Self.member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="validation_status">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="member">
+              <PropertyRef Name="validation_status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="get_members_sp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="guid" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="get_presidents_sp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="insert_job_post" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="title" Type="varchar" Mode="In" />
+          <Parameter Name="category" Type="varchar" Mode="In" />
+          <Parameter Name="post_type" Type="varchar" Mode="In" />
+          <Parameter Name="location" Type="varchar" Mode="In" />
+          <Parameter Name="description" Type="varchar(max)" Mode="In" />
+          <Parameter Name="salary" Type="varchar" Mode="In" />
+          <Parameter Name="tags" Type="varchar" Mode="In" />
+          <Parameter Name="image_path" Type="varchar" Mode="In" />
+          <Parameter Name="campus" Type="varchar(max)" Mode="In" />
+          <Parameter Name="created_at" Type="datetime" Mode="In" />
+          <Parameter Name="created_by" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="insert_member_sp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="varchar" Mode="In" />
+          <Parameter Name="email" Type="varchar" Mode="In" />
+          <Parameter Name="guid" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="mobile_no" Type="varchar" Mode="In" />
+          <Parameter Name="ip_address" Type="varchar" Mode="In" />
+          <Parameter Name="headers" Type="varchar(max)" Mode="In" />
+          <Parameter Name="created_at" Type="datetime" Mode="In" />
+          <Parameter Name="created_by" Type="varchar" Mode="In" />
+          <Parameter Name="already_voted" Type="bit" Mode="In" />
+          <Parameter Name="password" Type="varchar" Mode="In" />
+          <Parameter Name="confirm_password" Type="varchar" Mode="In" />
+          <Parameter Name="registration_no" Type="varchar" Mode="In" />
+          <Parameter Name="degree_completion_date" Type="date" Mode="In" />
+          <Parameter Name="campus" Type="varchar" Mode="In" />
+          <Parameter Name="category_studied" Type="varchar" Mode="In" />
+          <Parameter Name="program_studied" Type="varchar" Mode="In" />
+          <Parameter Name="org_comp_working_in" Type="varchar" Mode="In" />
+          <Parameter Name="designation" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="insert_news" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="news_guid" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="news_title" Type="varchar(max)" Mode="In" />
+          <Parameter Name="news_date" Type="date" Mode="In" />
+          <Parameter Name="news_details" Type="varchar(max)" Mode="In" />
+          <Parameter Name="campus" Type="varchar(max)" Mode="In" />
+          <Parameter Name="news_image" Type="varchar(max)" Mode="In" />
+          <Parameter Name="news_link" Type="varchar(max)" Mode="In" />
+          <Parameter Name="news_expir_date" Type="date" Mode="In" />
+          <Parameter Name="created_at" Type="datetime" Mode="In" />
+          <Parameter Name="created_by" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="insert_nomination_sp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="position" Type="varchar" Mode="In" />
+          <Parameter Name="name" Type="varchar" Mode="In" />
+          <Parameter Name="father_name" Type="varchar" Mode="In" />
+          <Parameter Name="reg_number" Type="varchar" Mode="In" />
+          <Parameter Name="grad_year" Type="varchar" Mode="In" />
+          <Parameter Name="grad_dept" Type="varchar" Mode="In" />
+          <Parameter Name="indust_org" Type="varchar" Mode="In" />
+          <Parameter Name="experi_years" Type="varchar" Mode="In" />
+          <Parameter Name="email" Type="varchar" Mode="In" />
+          <Parameter Name="mobile_num" Type="varchar" Mode="In" />
+          <Parameter Name="cnic" Type="varchar" Mode="In" />
+          <Parameter Name="town_city_provice" Type="varchar" Mode="In" />
+          <Parameter Name="cv_path" Type="varchar" Mode="In" />
+          <Parameter Name="image" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="insert_upcoming_event" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="event_guid" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="event_date_time" Type="datetime" Mode="In" />
+          <Parameter Name="event_title" Type="varchar(max)" Mode="In" />
+          <Parameter Name="event_details" Type="varchar(max)" Mode="In" />
+          <Parameter Name="campus" Type="varchar(max)" Mode="In" />
+          <Parameter Name="event_link" Type="varchar(max)" Mode="In" />
+          <Parameter Name="event_expir_date" Type="date" Mode="In" />
+          <Parameter Name="created_at" Type="datetime" Mode="In" />
+          <Parameter Name="created_by" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="update_job_post" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="job_post_id" Type="int" Mode="In" />
+          <Parameter Name="title" Type="varchar" Mode="In" />
+          <Parameter Name="category" Type="varchar" Mode="In" />
+          <Parameter Name="post_type" Type="varchar" Mode="In" />
+          <Parameter Name="location" Type="varchar" Mode="In" />
+          <Parameter Name="description" Type="varchar(max)" Mode="In" />
+          <Parameter Name="salary" Type="varchar" Mode="In" />
+          <Parameter Name="tags" Type="varchar" Mode="In" />
+          <Parameter Name="image_path" Type="varchar" Mode="In" />
+          <Parameter Name="campus" Type="varchar(max)" Mode="In" />
+          <Parameter Name="created_at" Type="datetime" Mode="In" />
+          <Parameter Name="created_by" Type="varchar" Mode="In" />
+          <Parameter Name="updated_at" Type="datetime" Mode="In" />
+          <Parameter Name="updated_by" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="update_member_candidate_sp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="guid" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="candidate_id" Type="int" Mode="In" />
+          <Parameter Name="ip_address" Type="varchar" Mode="In" />
+          <Parameter Name="headers" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="update_member_sp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="member_id" Type="int" Mode="In" />
+          <Parameter Name="name" Type="varchar" Mode="In" />
+          <Parameter Name="email" Type="varchar" Mode="In" />
+          <Parameter Name="guid" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="mobile_no" Type="varchar" Mode="In" />
+          <Parameter Name="ip_address" Type="varchar" Mode="In" />
+          <Parameter Name="headers" Type="varchar(max)" Mode="In" />
+          <Parameter Name="created_at" Type="datetime" Mode="In" />
+          <Parameter Name="created_by" Type="varchar" Mode="In" />
+          <Parameter Name="updated_at" Type="datetime" Mode="In" />
+          <Parameter Name="updated_by" Type="varchar" Mode="In" />
+          <Parameter Name="already_voted" Type="bit" Mode="In" />
+          <Parameter Name="password" Type="varchar" Mode="In" />
+          <Parameter Name="confirm_password" Type="varchar" Mode="In" />
+          <Parameter Name="registration_no" Type="varchar" Mode="In" />
+          <Parameter Name="degree_completion_date" Type="date" Mode="In" />
+          <Parameter Name="campus" Type="varchar" Mode="In" />
+          <Parameter Name="category_studied" Type="varchar" Mode="In" />
+          <Parameter Name="program_studied" Type="varchar" Mode="In" />
+          <Parameter Name="org_comp_working_in" Type="varchar" Mode="In" />
+          <Parameter Name="designation" Type="varchar" Mode="In" />
+          <Parameter Name="validation_status" Type="int" Mode="In" />
+        </Function>
+        <Function Name="update_news" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="news_id" Type="int" Mode="In" />
+          <Parameter Name="news_title" Type="varchar(max)" Mode="In" />
+          <Parameter Name="news_date" Type="date" Mode="In" />
+          <Parameter Name="news_details" Type="varchar(max)" Mode="In" />
+          <Parameter Name="campus" Type="varchar(max)" Mode="In" />
+          <Parameter Name="news_image" Type="varchar(max)" Mode="In" />
+          <Parameter Name="news_link" Type="varchar(max)" Mode="In" />
+          <Parameter Name="news_expir_date" Type="date" Mode="In" />
+          <Parameter Name="created_at" Type="datetime" Mode="In" />
+          <Parameter Name="created_by" Type="varchar" Mode="In" />
+          <Parameter Name="updated_at" Type="datetime" Mode="In" />
+          <Parameter Name="updated_by" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="update_upcoming_event" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="event_id" Type="int" Mode="In" />
+          <Parameter Name="event_guid" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="event_date_time" Type="datetime" Mode="In" />
+          <Parameter Name="event_title" Type="varchar(max)" Mode="In" />
+          <Parameter Name="event_details" Type="varchar(max)" Mode="In" />
+          <Parameter Name="campus" Type="varchar(max)" Mode="In" />
+          <Parameter Name="event_link" Type="varchar(max)" Mode="In" />
+          <Parameter Name="event_expir_date" Type="date" Mode="In" />
+          <Parameter Name="created_at" Type="datetime" Mode="In" />
+          <Parameter Name="created_by" Type="varchar" Mode="In" />
+          <Parameter Name="updated_at" Type="datetime" Mode="In" />
+          <Parameter Name="updated_by" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="FUI_POLLModelStoreContainer">
+          <EntitySet Name="alumni_admin" EntityType="Self.alumni_admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="candidate" EntityType="Self.candidate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="category" EntityType="Self.category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="election" EntityType="Self.election" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="job_post" EntityType="Self.job_post" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="member" EntityType="Self.member" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="news" EntityType="Self.news" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="upcoming_event" EntityType="Self.upcoming_event" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="validation_status" EntityType="Self.validation_status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="member_candidate" EntityType="Self.member_candidate" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [member_candidate].[member_id] AS [member_id], 
+    [member_candidate].[candidate_id] AS [candidate_id], 
+    [member_candidate].[created_at] AS [created_at], 
+    [member_candidate].[created_by] AS [created_by], 
+    [member_candidate].[updated_at] AS [updated_at], 
+    [member_candidate].[updated_by] AS [updated_by]
+    FROM [dbo].[member_candidate] AS [member_candidate]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_candidate_category" Association="Self.FK_candidate_category">
+            <End Role="category" EntitySet="category" />
+            <End Role="candidate" EntitySet="candidate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_candidate_election" Association="Self.FK_candidate_election">
+            <End Role="election" EntitySet="election" />
+            <End Role="candidate" EntitySet="candidate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_member_candidate_candidate" Association="Self.FK_member_candidate_candidate">
+            <End Role="candidate" EntitySet="candidate" />
+            <End Role="member_candidate" EntitySet="member_candidate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_member_candidate_member" Association="Self.FK_member_candidate_member">
+            <End Role="member" EntitySet="member" />
+            <End Role="member_candidate" EntitySet="member_candidate" />
+          </AssociationSet>
+          <AssociationSet Name="fk_member_validation_status" Association="Self.fk_member_validation_status">
+            <End Role="validation_status" EntitySet="validation_status" />
+            <End Role="member" EntitySet="member" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FUI_POLLModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="FUI_POLLEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="get_polls_sp" ReturnType="Collection(FUI_POLLModel.get_polls_sp_Result)">
+          <Parameter Name="guid" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="get_presidents_sp" ReturnType="Collection(FUI_POLLModel.get_presidents_sp_Result)" />
+          <FunctionImport Name="insert_nomination_sp">
+            <Parameter Name="position" Mode="In" Type="String" />
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="father_name" Mode="In" Type="String" />
+            <Parameter Name="reg_number" Mode="In" Type="String" />
+            <Parameter Name="grad_year" Mode="In" Type="String" />
+            <Parameter Name="grad_dept" Mode="In" Type="String" />
+            <Parameter Name="indust_org" Mode="In" Type="String" />
+            <Parameter Name="experi_years" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="mobile_num" Mode="In" Type="String" />
+            <Parameter Name="cnic" Mode="In" Type="String" />
+            <Parameter Name="town_city_provice" Mode="In" Type="String" />
+            <Parameter Name="cv_path" Mode="In" Type="String" />
+            <Parameter Name="image" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="insert_poll_sp">
+            <Parameter Name="president_id" Mode="In" Type="Int32" />
+            <Parameter Name="vicepresident_id" Mode="In" Type="Int32" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="guid" Mode="In" Type="Guid" />
+            <Parameter Name="ip_address" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="update_poll_sp">
+            <Parameter Name="president_id" Mode="In" Type="String" />
+            <Parameter Name="vicepresident_id" Mode="In" Type="String" />
+            <Parameter Name="secretary_id" Mode="In" Type="String" />
+            <Parameter Name="treasurer_id" Mode="In" Type="String" />
+            <Parameter Name="guid" Mode="In" Type="Guid" />
+            <Parameter Name="ip_address" Mode="In" Type="String" />
+            <Parameter Name="headers" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="candidates" EntityType="FUI_POLLModel.candidate" />
+          <EntitySet Name="categories" EntityType="FUI_POLLModel.category" />
+          <EntitySet Name="elections" EntityType="FUI_POLLModel.election" />
+          <AssociationSet Name="FK_candidate_category" Association="FUI_POLLModel.FK_candidate_category">
+            <End Role="category" EntitySet="categories" />
+            <End Role="candidate" EntitySet="candidates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_candidate_election" Association="FUI_POLLModel.FK_candidate_election">
+            <End Role="election" EntitySet="elections" />
+            <End Role="candidate" EntitySet="candidates" />
+          </AssociationSet>
+          <FunctionImport Name="get_members_sp">
+          <Parameter Name="guid" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="update_member_candidate_sp">
+            <Parameter Name="guid" Mode="In" Type="Guid" />
+            <Parameter Name="candidate_id" Mode="In" Type="Int32" />
+            <Parameter Name="ip_address" Mode="In" Type="String" />
+            <Parameter Name="headers" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="validation_status" EntityType="FUI_POLLModel.validation_status" />
+          <EntitySet Name="member_candidate" EntityType="FUI_POLLModel.member_candidate" />
+          <AssociationSet Name="FK_member_candidate_candidate" Association="FUI_POLLModel.FK_member_candidate_candidate">
+            <End Role="candidate" EntitySet="candidates" />
+            <End Role="member_candidate" EntitySet="member_candidate" />
+          </AssociationSet>
+          <EntitySet Name="members" EntityType="FUI_POLLModel.member" />
+          <AssociationSet Name="FK_member_candidate_member" Association="FUI_POLLModel.FK_member_candidate_member">
+            <End Role="member" EntitySet="members" />
+            <End Role="member_candidate" EntitySet="member_candidate" />
+          </AssociationSet>
+          <AssociationSet Name="fk_member_validation_status" Association="FUI_POLLModel.fk_member_validation_status">
+            <End Role="validation_status" EntitySet="validation_status" />
+            <End Role="member" EntitySet="members" />
+          </AssociationSet>
+          <FunctionImport Name="insert_nomination_sp1">
+            <Parameter Name="position" Mode="In" Type="String" />
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="father_name" Mode="In" Type="String" />
+            <Parameter Name="reg_number" Mode="In" Type="String" />
+            <Parameter Name="grad_year" Mode="In" Type="String" />
+            <Parameter Name="grad_dept" Mode="In" Type="String" />
+            <Parameter Name="indust_org" Mode="In" Type="String" />
+            <Parameter Name="experi_years" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="mobile_num" Mode="In" Type="String" />
+            <Parameter Name="cnic" Mode="In" Type="String" />
+            <Parameter Name="town_city_provice" Mode="In" Type="String" />
+            <Parameter Name="cv_path" Mode="In" Type="String" />
+            <Parameter Name="image" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="insert_member_sp">
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="guid" Mode="In" Type="Guid" />
+            <Parameter Name="mobile_no" Mode="In" Type="String" />
+            <Parameter Name="ip_address" Mode="In" Type="String" />
+            <Parameter Name="headers" Mode="In" Type="String" />
+            <Parameter Name="created_at" Mode="In" Type="DateTime" />
+            <Parameter Name="created_by" Mode="In" Type="String" />
+            <Parameter Name="already_voted" Mode="In" Type="Boolean" />
+            <Parameter Name="password" Mode="In" Type="String" />
+            <Parameter Name="confirm_password" Mode="In" Type="String" />
+            <Parameter Name="registration_no" Mode="In" Type="String" />
+            <Parameter Name="degree_completion_date" Mode="In" Type="DateTime" />
+            <Parameter Name="campus" Mode="In" Type="String" />
+            <Parameter Name="category_studied" Mode="In" Type="String" />
+            <Parameter Name="program_studied" Mode="In" Type="String" />
+            <Parameter Name="org_comp_working_in" Mode="In" Type="String" />
+            <Parameter Name="designation" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="update_member_sp">
+            <Parameter Name="member_id" Mode="In" Type="Int32" />
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="guid" Mode="In" Type="Guid" />
+            <Parameter Name="mobile_no" Mode="In" Type="String" />
+            <Parameter Name="ip_address" Mode="In" Type="String" />
+            <Parameter Name="headers" Mode="In" Type="String" />
+            <Parameter Name="created_at" Mode="In" Type="DateTime" />
+            <Parameter Name="created_by" Mode="In" Type="String" />
+            <Parameter Name="updated_at" Mode="In" Type="DateTime" />
+            <Parameter Name="updated_by" Mode="In" Type="String" />
+            <Parameter Name="already_voted" Mode="In" Type="Boolean" />
+            <Parameter Name="password" Mode="In" Type="String" />
+            <Parameter Name="confirm_password" Mode="In" Type="String" />
+            <Parameter Name="registration_no" Mode="In" Type="String" />
+            <Parameter Name="degree_completion_date" Mode="In" Type="DateTime" />
+            <Parameter Name="campus" Mode="In" Type="String" />
+            <Parameter Name="category_studied" Mode="In" Type="String" />
+            <Parameter Name="program_studied" Mode="In" Type="String" />
+            <Parameter Name="org_comp_working_in" Mode="In" Type="String" />
+            <Parameter Name="designation" Mode="In" Type="String" />
+            <Parameter Name="validation_status" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="alumni_admin" EntityType="FUI_POLLModel.alumni_admin" />
+          <EntitySet Name="job_post" EntityType="FUI_POLLModel.job_post" />
+          <FunctionImport Name="insert_job_post">
+            <Parameter Name="title" Mode="In" Type="String" />
+            <Parameter Name="category" Mode="In" Type="String" />
+            <Parameter Name="post_type" Mode="In" Type="String" />
+            <Parameter Name="location" Mode="In" Type="String" />
+            <Parameter Name="description" Mode="In" Type="String" />
+            <Parameter Name="salary" Mode="In" Type="String" />
+            <Parameter Name="tags" Mode="In" Type="String" />
+            <Parameter Name="image_path" Mode="In" Type="String" />
+            <Parameter Name="campus" Mode="In" Type="String" />
+            <Parameter Name="created_at" Mode="In" Type="DateTime" />
+            <Parameter Name="created_by" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="update_job_post">
+            <Parameter Name="job_post_id" Mode="In" Type="Int32" />
+            <Parameter Name="title" Mode="In" Type="String" />
+            <Parameter Name="category" Mode="In" Type="String" />
+            <Parameter Name="post_type" Mode="In" Type="String" />
+            <Parameter Name="location" Mode="In" Type="String" />
+            <Parameter Name="description" Mode="In" Type="String" />
+            <Parameter Name="salary" Mode="In" Type="String" />
+            <Parameter Name="tags" Mode="In" Type="String" />
+            <Parameter Name="image_path" Mode="In" Type="String" />
+            <Parameter Name="campus" Mode="In" Type="String" />
+            <Parameter Name="created_at" Mode="In" Type="DateTime" />
+            <Parameter Name="created_by" Mode="In" Type="String" />
+            <Parameter Name="updated_at" Mode="In" Type="DateTime" />
+            <Parameter Name="updated_by" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="upcoming_event" EntityType="FUI_POLLModel.upcoming_event" />
+          <FunctionImport Name="insert_upcoming_event">
+            <Parameter Name="event_guid" Mode="In" Type="Guid" />
+            <Parameter Name="event_date_time" Mode="In" Type="DateTime" />
+            <Parameter Name="event_title" Mode="In" Type="String" />
+            <Parameter Name="event_details" Mode="In" Type="String" />
+            <Parameter Name="campus" Mode="In" Type="String" />
+            <Parameter Name="event_link" Mode="In" Type="String" />
+            <Parameter Name="event_expir_date" Mode="In" Type="DateTime" />
+            <Parameter Name="created_at" Mode="In" Type="DateTime" />
+            <Parameter Name="created_by" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="update_upcoming_event">
+            <Parameter Name="event_id" Mode="In" Type="Int32" />
+            <Parameter Name="event_guid" Mode="In" Type="Guid" />
+            <Parameter Name="event_date_time" Mode="In" Type="DateTime" />
+            <Parameter Name="event_title" Mode="In" Type="String" />
+            <Parameter Name="event_details" Mode="In" Type="String" />
+            <Parameter Name="campus" Mode="In" Type="String" />
+            <Parameter Name="event_link" Mode="In" Type="String" />
+            <Parameter Name="event_expir_date" Mode="In" Type="DateTime" />
+            <Parameter Name="created_at" Mode="In" Type="DateTime" />
+            <Parameter Name="created_by" Mode="In" Type="String" />
+            <Parameter Name="updated_at" Mode="In" Type="DateTime" />
+            <Parameter Name="updated_by" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="news" EntityType="FUI_POLLModel.news" />
+          <FunctionImport Name="insert_news">
+            <Parameter Name="news_guid" Mode="In" Type="Guid" />
+            <Parameter Name="news_title" Mode="In" Type="String" />
+            <Parameter Name="news_date" Mode="In" Type="DateTime" />
+            <Parameter Name="news_details" Mode="In" Type="String" />
+            <Parameter Name="campus" Mode="In" Type="String" />
+            <Parameter Name="news_image" Mode="In" Type="String" />
+            <Parameter Name="news_link" Mode="In" Type="String" />
+            <Parameter Name="news_expir_date" Mode="In" Type="DateTime" />
+            <Parameter Name="created_at" Mode="In" Type="DateTime" />
+            <Parameter Name="created_by" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="update_news">
+            <Parameter Name="news_id" Mode="In" Type="Int32" />
+            <Parameter Name="news_title" Mode="In" Type="String" />
+            <Parameter Name="news_date" Mode="In" Type="DateTime" />
+            <Parameter Name="news_details" Mode="In" Type="String" />
+            <Parameter Name="campus" Mode="In" Type="String" />
+            <Parameter Name="news_image" Mode="In" Type="String" />
+            <Parameter Name="news_link" Mode="In" Type="String" />
+            <Parameter Name="news_expir_date" Mode="In" Type="DateTime" />
+            <Parameter Name="created_at" Mode="In" Type="DateTime" />
+            <Parameter Name="created_by" Mode="In" Type="String" />
+            <Parameter Name="updated_at" Mode="In" Type="DateTime" />
+            <Parameter Name="updated_by" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="get_polls_sp_Result">
+          <Property Type="String" Name="name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="email" Nullable="true" MaxLength="50" />
+          <Property Type="Guid" Name="guid" Nullable="false" />
+          <Property Type="String" Name="mobile_no" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="president_id" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="vicepresident_id" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="secretary_id" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="treasurer_id" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ip_address" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="headers" Nullable="true" />
+          <Property Type="DateTime" Name="created_at" Nullable="true" Precision="23" />
+          <Property Type="String" Name="created_by" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="updated_at" Nullable="true" Precision="23" />
+          <Property Type="String" Name="updated_by" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="get_presidents_sp_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="image" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="candidate">
+          <Key>
+            <PropertyRef Name="candidate_id" />
+          </Key>
+          <Property Name="election_title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="category_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="image" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="grad_dept" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="grad_year" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="indust_org_working" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="exper_years" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="town_city_province" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="message_to_voter" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="education" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="experience_details" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="candidate_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="category" Relationship="FUI_POLLModel.FK_candidate_category" FromRole="candidate" ToRole="category" />
+          <NavigationProperty Name="election" Relationship="FUI_POLLModel.FK_candidate_election" FromRole="candidate" ToRole="election" />
+          <NavigationProperty Name="member_candidate" Relationship="FUI_POLLModel.FK_member_candidate_candidate" FromRole="candidate" ToRole="member_candidate" />
+        </EntityType>
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="category_name" />
+          </Key>
+          <Property Name="category_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="category_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="candidates" Relationship="FUI_POLLModel.FK_candidate_category" FromRole="category" ToRole="candidate" />
+        </EntityType>
+        <EntityType Name="election">
+          <Key>
+            <PropertyRef Name="election_title" />
+          </Key>
+          <Property Name="election_title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="start_date_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="end_date_time" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="candidates" Relationship="FUI_POLLModel.FK_candidate_election" FromRole="election" ToRole="candidate" />
+        </EntityType>
+        <Association Name="FK_candidate_category">
+          <End Type="FUI_POLLModel.category" Role="category" Multiplicity="1" />
+          <End Type="FUI_POLLModel.candidate" Role="candidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="category_name" />
+            </Principal>
+            <Dependent Role="candidate">
+              <PropertyRef Name="category_name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_candidate_election">
+          <End Type="FUI_POLLModel.election" Role="election" Multiplicity="1" />
+          <End Type="FUI_POLLModel.candidate" Role="candidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="election">
+              <PropertyRef Name="election_title" />
+            </Principal>
+            <Dependent Role="candidate">
+              <PropertyRef Name="election_title" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="validation_status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="members" Relationship="FUI_POLLModel.fk_member_validation_status" FromRole="validation_status" ToRole="member" />
+        </EntityType>
+        <EntityType Name="member_candidate">
+          <Key>
+            <PropertyRef Name="member_id" />
+            <PropertyRef Name="candidate_id" />
+            <PropertyRef Name="created_at" />
+            <PropertyRef Name="created_by" />
+          </Key>
+          <Property Name="member_id" Type="Int32" Nullable="false" />
+          <Property Name="candidate_id" Type="Int32" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="created_by" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="candidate" Relationship="FUI_POLLModel.FK_member_candidate_candidate" FromRole="member_candidate" ToRole="candidate" />
+          <NavigationProperty Name="member" Relationship="FUI_POLLModel.FK_member_candidate_member" FromRole="member_candidate" ToRole="member" />
+        </EntityType>
+        <Association Name="FK_member_candidate_candidate">
+          <End Type="FUI_POLLModel.candidate" Role="candidate" Multiplicity="1" />
+          <End Type="FUI_POLLModel.member_candidate" Role="member_candidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="candidate">
+              <PropertyRef Name="candidate_id" />
+            </Principal>
+            <Dependent Role="member_candidate">
+              <PropertyRef Name="candidate_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="member">
+          <Key>
+            <PropertyRef Name="member_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="guid" Type="Guid" Nullable="false" />
+          <Property Name="mobile_no" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ip_address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="headers" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="created_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="member_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="already_voted" Type="Boolean" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="confirm_password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="registration_no" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="degree_completion_date" Type="DateTime" Precision="0" />
+          <Property Name="campus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="program_studied" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="org_comp_working_in" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="designation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="validation_status" Type="Int32" Nullable="false" />
+          <Property Name="category_studied" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="member_candidate" Relationship="FUI_POLLModel.FK_member_candidate_member" FromRole="member" ToRole="member_candidate" />
+          <NavigationProperty Name="validation_status1" Relationship="FUI_POLLModel.fk_member_validation_status" FromRole="member" ToRole="validation_status" />
+        </EntityType>
+        <Association Name="FK_member_candidate_member">
+          <End Type="FUI_POLLModel.member" Role="member" Multiplicity="1" />
+          <End Type="FUI_POLLModel.member_candidate" Role="member_candidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="member">
+              <PropertyRef Name="member_id" />
+            </Principal>
+            <Dependent Role="member_candidate">
+              <PropertyRef Name="member_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_member_validation_status">
+          <End Type="FUI_POLLModel.validation_status" Role="validation_status" Multiplicity="1" />
+          <End Type="FUI_POLLModel.member" Role="member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="validation_status">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="member">
+              <PropertyRef Name="validation_status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="alumni_admin">
+          <Key>
+            <PropertyRef Name="adm_id" />
+          </Key>
+          <Property Name="adm_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="adm_guid" Type="Guid" />
+          <Property Name="adm_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="adm_email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="adm_password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="is_active" Type="Boolean" />
+          <Property Name="campus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="created_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="job_post">
+          <Key>
+            <PropertyRef Name="job_post_id" />
+          </Key>
+          <Property Name="job_post_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="category" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="post_type" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="location" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="salary" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="tags" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="image_path" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="campus" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="created_at" Type="DateTime" Precision="0" />
+          <Property Name="created_by" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="updated_at" Type="DateTime" Precision="0" />
+          <Property Name="updated_by" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="upcoming_event">
+          <Key>
+            <PropertyRef Name="event_id" />
+          </Key>
+          <Property Name="event_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="event_guid" Type="Guid" Nullable="false" />
+          <Property Name="event_date_time" Type="DateTime" Precision="3" />
+          <Property Name="event_title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="event_details" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="campus" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="event_link" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="event_expir_date" Type="DateTime" Precision="0" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="created_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="news">
+          <Key>
+            <PropertyRef Name="news_id" />
+          </Key>
+          <Property Name="news_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="news_guid" Type="Guid" />
+          <Property Name="news_title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="news_date" Type="DateTime" Precision="0" />
+          <Property Name="news_details" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="campus" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="news_image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="news_link" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="news_expir_date" Type="DateTime" Precision="0" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="created_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FUI_POLLModelStoreContainer" CdmEntityContainer="FUI_POLLEntities">
+          <FunctionImportMapping FunctionImportName="get_presidents_sp" FunctionName="FUI_POLLModel.Store.get_presidents_sp">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FUI_POLLModel.get_presidents_sp_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="image" ColumnName="image" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="candidates">
+            <EntityTypeMapping TypeName="FUI_POLLModel.candidate">
+              <MappingFragment StoreEntitySet="candidate">
+                <ScalarProperty Name="candidate_id" ColumnName="candidate_id" />
+                <ScalarProperty Name="experience_details" ColumnName="experience_details" />
+                <ScalarProperty Name="education" ColumnName="education" />
+                <ScalarProperty Name="message_to_voter" ColumnName="message_to_voter" />
+                <ScalarProperty Name="town_city_province" ColumnName="town_city_province" />
+                <ScalarProperty Name="exper_years" ColumnName="exper_years" />
+                <ScalarProperty Name="indust_org_working" ColumnName="indust_org_working" />
+                <ScalarProperty Name="grad_year" ColumnName="grad_year" />
+                <ScalarProperty Name="grad_dept" ColumnName="grad_dept" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="category_name" ColumnName="category_name" />
+                <ScalarProperty Name="election_title" ColumnName="election_title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="categories">
+            <EntityTypeMapping TypeName="FUI_POLLModel.category">
+              <MappingFragment StoreEntitySet="category">
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="category_name" ColumnName="category_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="elections">
+            <EntityTypeMapping TypeName="FUI_POLLModel.election">
+              <MappingFragment StoreEntitySet="election">
+                <ScalarProperty Name="end_date_time" ColumnName="end_date_time" />
+                <ScalarProperty Name="start_date_time" ColumnName="start_date_time" />
+                <ScalarProperty Name="election_title" ColumnName="election_title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="get_members_sp" FunctionName="FUI_POLLModel.Store.get_members_sp" />
+          <FunctionImportMapping FunctionImportName="update_member_candidate_sp" FunctionName="FUI_POLLModel.Store.update_member_candidate_sp" />
+          <EntitySetMapping Name="validation_status">
+            <EntityTypeMapping TypeName="FUI_POLLModel.validation_status">
+              <MappingFragment StoreEntitySet="validation_status">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="member_candidate">
+            <EntityTypeMapping TypeName="FUI_POLLModel.member_candidate">
+              <MappingFragment StoreEntitySet="member_candidate">
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="candidate_id" ColumnName="candidate_id" />
+                <ScalarProperty Name="member_id" ColumnName="member_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="members">
+            <EntityTypeMapping TypeName="FUI_POLLModel.member">
+              <MappingFragment StoreEntitySet="member">
+                <ScalarProperty Name="category_studied" ColumnName="category_studied" />
+                <ScalarProperty Name="validation_status" ColumnName="validation_status" />
+                <ScalarProperty Name="designation" ColumnName="designation" />
+                <ScalarProperty Name="org_comp_working_in" ColumnName="org_comp_working_in" />
+                <ScalarProperty Name="program_studied" ColumnName="program_studied" />
+                <ScalarProperty Name="campus" ColumnName="campus" />
+                <ScalarProperty Name="degree_completion_date" ColumnName="degree_completion_date" />
+                <ScalarProperty Name="registration_no" ColumnName="registration_no" />
+                <ScalarProperty Name="confirm_password" ColumnName="confirm_password" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="already_voted" ColumnName="already_voted" />
+                <ScalarProperty Name="member_id" ColumnName="member_id" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="headers" ColumnName="headers" />
+                <ScalarProperty Name="ip_address" ColumnName="ip_address" />
+                <ScalarProperty Name="mobile_no" ColumnName="mobile_no" />
+                <ScalarProperty Name="guid" ColumnName="guid" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="insert_nomination_sp1" FunctionName="FUI_POLLModel.Store.insert_nomination_sp" />
+          <FunctionImportMapping FunctionImportName="insert_member_sp" FunctionName="FUI_POLLModel.Store.insert_member_sp" />
+          <FunctionImportMapping FunctionImportName="update_member_sp" FunctionName="FUI_POLLModel.Store.update_member_sp" />
+          <EntitySetMapping Name="alumni_admin">
+            <EntityTypeMapping TypeName="FUI_POLLModel.alumni_admin">
+              <MappingFragment StoreEntitySet="alumni_admin">
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="campus" ColumnName="campus" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+                <ScalarProperty Name="adm_password" ColumnName="adm_password" />
+                <ScalarProperty Name="adm_email" ColumnName="adm_email" />
+                <ScalarProperty Name="adm_name" ColumnName="adm_name" />
+                <ScalarProperty Name="adm_guid" ColumnName="adm_guid" />
+                <ScalarProperty Name="adm_id" ColumnName="adm_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="job_post">
+            <EntityTypeMapping TypeName="FUI_POLLModel.job_post">
+              <MappingFragment StoreEntitySet="job_post">
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="campus" ColumnName="campus" />
+                <ScalarProperty Name="image_path" ColumnName="image_path" />
+                <ScalarProperty Name="tags" ColumnName="tags" />
+                <ScalarProperty Name="salary" ColumnName="salary" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="post_type" ColumnName="post_type" />
+                <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="job_post_id" ColumnName="job_post_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="insert_job_post" FunctionName="FUI_POLLModel.Store.insert_job_post" />
+          <FunctionImportMapping FunctionImportName="update_job_post" FunctionName="FUI_POLLModel.Store.update_job_post" />
+          <EntitySetMapping Name="upcoming_event">
+            <EntityTypeMapping TypeName="FUI_POLLModel.upcoming_event">
+              <MappingFragment StoreEntitySet="upcoming_event">
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="event_expir_date" ColumnName="event_expir_date" />
+                <ScalarProperty Name="event_link" ColumnName="event_link" />
+                <ScalarProperty Name="campus" ColumnName="campus" />
+                <ScalarProperty Name="event_details" ColumnName="event_details" />
+                <ScalarProperty Name="event_title" ColumnName="event_title" />
+                <ScalarProperty Name="event_date_time" ColumnName="event_date_time" />
+                <ScalarProperty Name="event_guid" ColumnName="event_guid" />
+                <ScalarProperty Name="event_id" ColumnName="event_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="insert_upcoming_event" FunctionName="FUI_POLLModel.Store.insert_upcoming_event" />
+          <FunctionImportMapping FunctionImportName="update_upcoming_event" FunctionName="FUI_POLLModel.Store.update_upcoming_event" />
+          <EntitySetMapping Name="news">
+            <EntityTypeMapping TypeName="FUI_POLLModel.news">
+              <MappingFragment StoreEntitySet="news">
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="news_expir_date" ColumnName="news_expir_date" />
+                <ScalarProperty Name="news_link" ColumnName="news_link" />
+                <ScalarProperty Name="news_image" ColumnName="news_image" />
+                <ScalarProperty Name="campus" ColumnName="campus" />
+                <ScalarProperty Name="news_details" ColumnName="news_details" />
+                <ScalarProperty Name="news_date" ColumnName="news_date" />
+                <ScalarProperty Name="news_title" ColumnName="news_title" />
+                <ScalarProperty Name="news_guid" ColumnName="news_guid" />
+                <ScalarProperty Name="news_id" ColumnName="news_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="insert_news" FunctionName="FUI_POLLModel.Store.insert_news" />
+          <FunctionImportMapping FunctionImportName="update_news" FunctionName="FUI_POLLModel.Store.update_news" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,202 @@
+﻿@model IEnumerable<WebApplication1.Models.job_post>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+@Scripts.Render("~/bundles/bootstrap")
+<script src="~/Content/util.js"></script>
+<script src="~/Content/menu-aim.js"></script>
+<script src="~/Content/main.js"></script>
+<style>
+    .card {
+        margin-top: 5px !important;
+    }
+
+    .alert {
+        z-index: 200;
+    }
+
+    .card-header,
+    .card-footer {
+        background-color: #fff !important;
+    }
+
+    .badge {
+        cursor: pointer;
+    }
+
+    button {
+        justify-content: center;
+        border: none !important;
+    }
+
+    .badge-outline {
+        border: 1px solid #999;
+    }
+
+    .hl {
+        align-content: center;
+        width: 25%;
+    }
+
+
+    .badge {
+        padding: 0.5em .4em !important;
+        font-size: 13px !important;
+    }
+
+    .badge-pill {
+        padding-right: 0.8rem !important;
+        padding-left: 0.8rem !important;
+    }
+
+    .footer {
+        font-size: 16px !important;
+    }
+
+    img {
+        opacity: 0.8 !important;
+    }
+
+    h6 {
+        font-size: 14px !important;
+    }
+
+    @@media (max-width: 756px) {
+        .card .card-body {
+            padding: 0 !important;
+        }
+
+        .card {
+            margin-top: 5px !important;
+        }
+    }
+
+    @@media (min-width: 1200px) {
+        .col-xl-3 {
+            flex: 0 0 35%;
+            max-width: 31%;
+        }
+    }
+</style>
+
+<div class="">
+    <div class="text-component text-center">
+
+        <div class="container-fluid ">
+
+
+            <style>
+
+                .job-image {
+                    max-width: 50%;
+                    padding: 5px;
+                }
+            </style>
+            <div class="row justify-content-start px-5 py-5">
+
+
+
+                @foreach (var job_item in ViewBag.jobs_list)
+                {
+                    <div class="col-md-5 col-lg-4 col-xl-3 col-sm-6 d-flex align-items-stretch px-2">
+                        <div class=" card shadow-lg border-0  py-2">
+                            <div class="card-body text-center pb-0 mt-0 pt-3">
+                                <div class="row justify-content-between">
+                                    <div class="col-sm-auto">
+                                        <h6 class="badge badge-pill badge-success">@job_item.post_type</h6>
+                                    </div>
+                                    <div class="col-sm-auto">
+                                        <h6 class="badge badge-pill badge-secondary text-wrap">@job_item.salary</h6>
+                                    </div>
+                                </div>
+                                <a href="#" class="pop">
+                                    <img src="/@job_item.image_path" class="job-image" />
+                                </a>
+
+                                <div class="d-block">
+                                    <h5 class="card-title mb-0 font-weight-bold">@job_item.title</h5>
+                                    <small class="text-info my-1">@job_item.location</small>
+                                </div>
+                                @*<div class="d-inline-flex row mb-3 ">
+                            <div class="col-md-auto">
+                                <ul class="list-inline my-0">
+                                    <li class="list-inline-item"> <span class="badge badge-pill badge-outline ">UI</span></li>
+                                    <li class="list-inline-item"> <span class="badge badge-pill badge-outline ">UX</span></li>
+                                    <li class="list-inline-item"> <span class="badge badge-pill badge-outline  ">photoshop</span></li>
+                                    <li class="list-inline-item "> <button class="badge badge-pill badge-primary" type="button">+4</button></li>
+                                </ul>
+                            </div>
+                        </div>*@
+                                @*<div class="d-flex row  mb-0">
+                            <div class="col"><p class="text-muted"> We are looking for an experience UI and UX designer to work on our projects... </p></div>
+                        </div>*@
+                            <div class="card-footer border-0 text-center mx-auto ">
+
+                                @*<a href="view_job_posts/details/@job_item.job_post_id"><button class="btn btn-md btn-dark ">VIEW JOB</button></a>*@
+
+                                <a class="px-2 reject_link_new" href="@Url.Action("/view_job_posts", "home",new { id = @job_item.job_post_id } )" data-toggle="tooltip" data-placement="top" title="View Job">
+
+                                    <svg style="fill: #17a2b8 " xmlns="http://www.w3.org/2000/svg" height="1.3em" viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.2 by - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z" /></svg>                                </a>
+
+                                @*<a href="/home/job_post/Edit/@job_item.job_post_id"><button class="btn btn- btn-dark">EDIT</button></a>*@
+
+                                <a class="px-2" href="@Url.Action("/job_post/Edit", "home",new { id = @job_item.job_post_id } )" data-toggle="tooltip" data-placement="top" title="Edit Job">
+
+                                    <svg style="fill: #6c757d" xmlns="http://www.w3.org/2000/svg" height="1.3em" viewBox="0 0 576 512"><path d="M402.6 83.2l90.2 90.2c3.8 3.8 3.8 10 0 13.8L274.4 405.6l-92.8 10.3c-12.4 1.4-22.9-9.1-21.5-21.5l10.3-92.8L388.8 83.2c3.8-3.8 10-3.8 13.8 0zm162-22.9l-48.8-48.8c-15.2-15.2-39.9-15.2-55.2 0l-35.4 35.4c-3.8 3.8-3.8 10 0 13.8l90.2 90.2c3.8 3.8 10 3.8 13.8 0l35.4-35.4c15.2-15.3 15.2-40 0-55.2zM384 346.2V448H64V128h229.8c3.2 0 6.2-1.3 8.5-3.5l40-40c7.6-7.6 2.2-20.5-8.5-20.5H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V306.2c0-10.7-12.9-16-20.5-8.5l-40 40c-2.2 2.3-3.5 5.3-3.5 8.5z" /></svg>
+
+                                </a>
+
+
+                                @*<a href="/job_post/Delete/@job_item.job_post_id"><button class="sppb-btn btn-danger">DELETE</button></a>*@
+                                <a class="px-2 reject_link_new" href="@Url.Action("Delete", "job_post",new { id = @job_item.job_post_id } )" data-toggle="tooltip" data-placement="top" title="Delete Job">
+
+                                    <svg class="del" xmlns="http://www.w3.org/2000/svg" height="1.3em" viewBox="0 0 448 512">
+
+
+                                        <style>
+                                            .del {
+                                                fill: #ba1c1c
+                                            }
+                                        </style>
+                                        <path d="M32 464a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128H32zm272-256a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zM432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z" />
+                                    </svg>
+                                </a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+
+            </div>
+        </div> <!-- .content-wrapper -->
+        <div class="modal" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close btn-lg" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="" class="imagepreview" style="width: 100%;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            if (window.performance) {
+
+            }
+            console.info(performance.navigation.type);
+            if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
+                var x = document.getElementById("myAlert ");
+                x.remove();
+
+            }
+            else {
+
+            }
+        </script>

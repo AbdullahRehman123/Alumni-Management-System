@@ -1,0 +1,117 @@
+﻿@model WebApplication1.Models.member
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Content/util.js"></script>
+<script src="~/Content/menu-aim.js"></script>
+<script src="~/Content/main.js"></script>
+
+<div class="m-2">
+    <h2>Alumni Details</h2>
+
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.guid)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.guid)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.mobile_no)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.mobile_no)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ip_address)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ip_address)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.created_at)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.created_at)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.registration_no)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.registration_no)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.degree_completion_date)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.degree_completion_date)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.campus)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.campus)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.program_studied)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.program_studied)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.org_comp_working_in)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.org_comp_working_in)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.designation)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.designation)
+            </dd>
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>

@@ -1,0 +1,26 @@
+﻿@using WebApplication1.Models;
+@model dynamic
+@{
+    ViewBag.Title = "AlreadyVoted";
+}
+
+<center>
+    <div style="margin-bottom:120px" class="w-75 mt-4 alert alert-primary" role="alert">
+
+        <img style="height:100px;width:100px" src="~/Content/Images/GIFS/vote-ballot.gif" alt="already-voted" />
+        <h4 class="alert-heading mt-2 mb-0">You have already Voted!</h4>
+
+        @foreach (member item in Model.member)
+        {
+            <h5 class="">
+                From IP address @item.ip_address
+                at
+                @item.updated_at
+            </h5>
+        }
+        
+        <p></p>
+
+        <p class="mb-0">Results will be announced soon</p>
+    </div>
+</center>

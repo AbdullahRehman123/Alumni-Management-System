@@ -1,0 +1,158 @@
+﻿@model WebApplication1.Models.job_post
+@using System.Configuration;
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+@Scripts.Render("~/bundles/bootstrap")
+
+<div class="mt-2 p-5 rounded-3">
+    <form action="/job_post/create" class="pt-2 rounded-3" method="post" enctype="multipart/form-data" novalidate>
+
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal bg-light mt-2 rounded-3 p-2">
+
+            <div class="p-3">
+                @Html.ActionLink("Back to List", "view_job_posts", "Home")
+            </div>
+            <h4 class="row justify-content-center pt-2 pb-5">Add Latest Jobs</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group row justify-content-center">
+                @Html.LabelFor(model => model.title, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.title, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.title, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @{
+                string job_post_categories_string = ConfigurationManager.AppSettings["job_post_categories"];
+                string[] job_post_categories_values = job_post_categories_string.Split(',').Select(sValue => sValue.Trim()).ToArray();
+                List<SelectListItem> job_post_categories = new List<SelectListItem>();
+                for (int i = 0; i < job_post_categories_values.Length; i++)
+                {
+                    if (i == 0)
+                    {
+                        job_post_categories.Add(new SelectListItem { Text = job_post_categories_values[i], Selected = true, Disabled = true });
+                    }
+                    else
+                    {
+                        job_post_categories.Add(new SelectListItem { Text = job_post_categories_values[i], Value = job_post_categories_values[i] });
+                    }
+                }
+            }
+
+            <div class="form-group row justify-content-center">
+                @Html.LabelFor(model => model.category, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-6">
+                    @Html.DropDownListFor(model => model.category, job_post_categories, htmlAttributes: new { @class = "col-md-12" })
+                    @Html.ValidationMessageFor(model => model.category, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @{
+                string job_post_types_string = ConfigurationManager.AppSettings["job_post_types"];
+                string[] job_post_type_values = job_post_types_string.Split(',').Select(sValue => sValue.Trim()).ToArray();
+                List<SelectListItem> job_post_types = new List<SelectListItem>();
+                for (int i = 0; i < job_post_type_values.Length; i++)
+                {
+                    if (i == 0)
+                    {
+                        job_post_types.Add(new SelectListItem { Text = job_post_type_values[i], Selected = true, Disabled = true });
+                    }
+                    else
+                    {
+                        job_post_types.Add(new SelectListItem { Text = job_post_type_values[i], Value = job_post_type_values[i] });
+                    }
+                }
+            }
+
+            <div class="form-group row justify-content-center">
+                @Html.LabelFor(model => model.post_type, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-6">
+                    @Html.DropDownListFor(model => model.post_type, job_post_types, htmlAttributes: new { @class = "col-md-12" })
+                    @Html.ValidationMessageFor(model => model.post_type, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row justify-content-center">
+                @Html.LabelFor(model => model.location, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.location, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.location, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row justify-content-center">
+                @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row justify-content-center">
+                @Html.LabelFor(model => model.salary, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.salary, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.salary, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row justify-content-center">
+                @Html.LabelFor(model => model.tags, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.tags, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.tags, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @{
+                string configvalue1 = ConfigurationManager.AppSettings["campus_list"];
+                string[] values = configvalue1.Split(',').Select(sValue => sValue.Trim()).ToArray();
+                List<SelectListItem> campuses = new List<SelectListItem>();
+                for (int i = 0; i < values.Length; i++)
+                {
+                    if (i == 0)
+                    {
+                        campuses.Add(new SelectListItem { Text = values[i], Selected = true, Disabled = true });
+                    }
+                    else
+                    {
+                        campuses.Add(new SelectListItem { Text = values[i], Value = values[i] });
+                    }
+                }
+            }
+
+            <div class="form-group row justify-content-center">
+                @Html.LabelFor(model => model.campus, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-6">
+                    @Html.DropDownListFor(model => model.campus, campuses, htmlAttributes: new { @class = "col-md-12" })
+                    @Html.ValidationMessageFor(model => model.campus, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row justify-content-center">
+                @Html.LabelFor(model => model.image_path, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.image_path, new { htmlAttributes = new { required = "required", @class = "form-control", @type = "file", @style = "height:100%;font-size:1.2rem" } })
+                    @Html.ValidationMessageFor(model => model.image_path, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row justify-content-center p-2">
+                <div class="col-md-offset-2 col-md-6">
+                    <input type="submit" value="Add" class="sppb-btn" />
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="~/Content/util.js"></script>
+<script src="~/Content/menu-aim.js"></script>
+<script src="~/Content/main.js"></script>

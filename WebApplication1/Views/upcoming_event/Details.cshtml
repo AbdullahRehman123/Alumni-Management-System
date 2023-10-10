@@ -1,0 +1,105 @@
+﻿@model WebApplication1.Models.upcoming_event
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+<script src="~/Content/util.js"></script>
+<script src="~/Content/menu-aim.js"></script>
+<script src="~/Content/main.js"></script>
+
+<div class="mt-5 p-2">
+    <h4>Upcoming Event Details</h4>
+
+    <div>
+        
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.event_guid)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.event_guid)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.event_date_time)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.event_date_time)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.event_title)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.event_title)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.event_details)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.event_details)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.event_link)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.event_link)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.event_expir_date)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.event_expir_date)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.created_at)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.created_at)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.created_by)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.created_by)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.updated_at)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.updated_at)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.updated_by)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.updated_by)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.event_id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>

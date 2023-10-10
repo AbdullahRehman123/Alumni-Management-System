@@ -1,0 +1,89 @@
+﻿@model WebApplication1.Models.alumni_admin
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+<div class="p-2 mt-5">
+
+    <h2>Details</h2>
+
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.adm_guid)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.adm_guid)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.adm_name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.adm_name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.adm_email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.adm_email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.is_active)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.is_active)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.created_at)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.created_at)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.created_by)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.created_by)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.updated_at)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.updated_at)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.updated_by)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.updated_by)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.adm_id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>
+
+<script src="~/Content/util.js"></script>
+<script src="~/Content/menu-aim.js"></script>
+<script src="~/Content/main.js"></script>

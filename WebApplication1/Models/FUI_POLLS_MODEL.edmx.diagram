@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="dff551cb871843b6a9f838d8cc8e2ca3" Name="Diagram1" ZoomLevel="67">
+        <EntityTypeShape EntityType="FUI_POLLModel.candidate" Width="1.5" PointX="7.625" PointY="7" />
+        <EntityTypeShape EntityType="FUI_POLLModel.category" Width="1.5" PointX="5.375" PointY="8.125" />
+        <EntityTypeShape EntityType="FUI_POLLModel.election" Width="1.5" PointX="5.375" PointY="11.125" />
+        <AssociationConnector Association="FUI_POLLModel.FK_candidate_category" />
+        <AssociationConnector Association="FUI_POLLModel.FK_candidate_election" />
+        <EntityTypeShape EntityType="FUI_POLLModel.validation_status" Width="1.5" PointX="10.375" PointY="3.125" />
+        <EntityTypeShape EntityType="FUI_POLLModel.member_candidate" Width="1.5" PointX="16.875" PointY="4.75" />
+        <AssociationConnector Association="FUI_POLLModel.FK_member_candidate_candidate" />
+        <EntityTypeShape EntityType="FUI_POLLModel.member" Width="1.5" PointX="12.625" PointY="1.125" />
+        <AssociationConnector Association="FUI_POLLModel.FK_member_candidate_member" />
+        <AssociationConnector Association="FUI_POLLModel.fk_member_validation_status" />
+        <EntityTypeShape EntityType="FUI_POLLModel.alumni_admin" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="FUI_POLLModel.job_post" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="FUI_POLLModel.upcoming_event" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="FUI_POLLModel.news" Width="1.5" PointX="0.75" PointY="5.75" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

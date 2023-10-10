@@ -1,0 +1,177 @@
+﻿@model WebApplication1.Models.member
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>member</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.guid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.guid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mobile_no)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mobile_no)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ip_address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ip_address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.headers)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.headers)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.created_at)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.created_at)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.created_by)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.created_by)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.updated_at)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.updated_at)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.updated_by)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.updated_by)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.already_voted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.already_voted)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.confirm_password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.confirm_password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.registration_no)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.registration_no)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.degree_completion_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.degree_completion_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.campus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.campus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.program_studied)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.program_studied)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.org_comp_working_in)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.org_comp_working_in)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.designation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.designation)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="sppb-btn btn-danger" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

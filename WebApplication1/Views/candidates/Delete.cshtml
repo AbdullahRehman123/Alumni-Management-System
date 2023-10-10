@@ -1,0 +1,121 @@
+﻿@model WebApplication1.Models.candidate
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+    <div class="alert alert-danger mt-2" role="alert">
+        <h4>Are you sure you want to delete this record?</h4>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-danger" />
+                @Html.ActionLink("Back to List", "Dashboard", "Home")
+            </div>
+        }
+    </div>
+    <div>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.image)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.image)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.grad_dept)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.grad_dept)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.grad_year)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.grad_year)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.indust_org_working)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.indust_org_working)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.exper_years)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.exper_years)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.town_city_province)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.town_city_province)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.message_to_voter)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.message_to_voter)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.education)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.education)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.experience_details)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.experience_details)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.category.category_name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.category.category_name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.election.election_title)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.election.election_title)
+            </dd>
+
+        </dl>
+    </div>
+</main>

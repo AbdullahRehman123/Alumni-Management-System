@@ -1,0 +1,98 @@
+﻿@model WebApplication1.Models.upcoming_event
+@using System.Configuration;
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+<script src="~/Content/util.js"></script>
+<script src="~/Content/menu-aim.js"></script>
+<script src="~/Content/main.js"></script>
+
+
+<div class="mt-5 p-5 rounded-3">
+    <form action="/upcoming_event/create" class="needs-validation" method="post" enctype="multipart/form-data" novalidate>
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal bg-light mt-2 rounded-3 p-2">
+            <div class="p-3">
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+            <h4 class="row justify-content-center pt-2 pb-5">Add Upcoming Event</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group row justify-content-center">
+                @Html.LabelFor(model => model.event_title, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.event_title, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.event_title, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row justify-content-center">
+                @Html.LabelFor(model => model.event_date_time, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.event_date_time, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                    @Html.ValidationMessageFor(model => model.event_date_time, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row justify-content-center">
+                @Html.LabelFor(model => model.event_details, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.event_details, new { htmlAttributes = new { @class = "form-control", @style = "font-size:10pt", @rows = "5" } })
+                    @Html.ValidationMessageFor(model => model.event_details, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @{
+                string configvalue1 = ConfigurationManager.AppSettings["campus_list"];
+                string[] values = configvalue1.Split(',').Select(sValue => sValue.Trim()).ToArray();
+                List<SelectListItem> campuses = new List<SelectListItem>();
+                for (int i = 0; i < values.Length; i++)
+                {
+                    if (i == 0)
+                    {
+                        campuses.Add(new SelectListItem { Text = values[i], Selected = true, Disabled = true });
+                    }
+                    else
+                    {
+                        campuses.Add(new SelectListItem { Text = values[i], Value = values[i] });
+                    }
+                }
+            }
+
+            <div class="form-group row justify-content-center">
+                @Html.LabelFor(model => model.campus, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-6">
+                    @Html.DropDownListFor(model => model.campus, campuses, htmlAttributes: new { @class = "col-md-12" })
+                    @Html.ValidationMessageFor(model => model.campus, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row justify-content-center">
+                @Html.LabelFor(model => model.event_link, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.event_link, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.event_link, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row justify-content-center">
+                @Html.LabelFor(model => model.event_expir_date, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.event_expir_date, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                    @Html.ValidationMessageFor(model => model.event_expir_date, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row justify-content-center p-2">
+                <div class="col-md-offset-2 col-md-6">
+                    <input type="submit" value="Add" class="sppb-btn" />
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

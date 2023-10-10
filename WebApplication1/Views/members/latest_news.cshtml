@@ -1,0 +1,52 @@
+﻿@model IEnumerable<WebApplication1.Models.news>
+
+@{
+    ViewBag.Title = "upcoming_events";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Scripts.Render("~/bundles/bootstrap")
+<script src="~/Content/util.js"></script>
+<script src="~/Content/menu-aim.js"></script>
+<script src="~/Content/main.js"></script>
+
+<div class="sppb-col-md-12 sppb-col-sm-12" id="column-wrap-id-1490598591125">
+    <div id="column-id-1490598591125" class="sppb-column educon-box-shadow articles-slider-wrap">
+        <div class="sppb-column-addons">
+            <div id="sppb-addon-1490612695909" class="clearfix">
+                <div class="sppb-addon sppb-addon-header border-heading-style sppb-text-left">
+                    <h3 class="sppb-addon-title">Latest News</h3>
+                </div>
+            </div>
+            @foreach (var news_item in Model)
+            {
+                if (news_item.news_expir_date > DateTime.Now || news_item.news_date == DateTime.Now)
+                {
+                    <div id="sppb-addon-1678861647105" class="clearfix">
+                        <div class="sppb-addon sppb-addon-text-block 0  ">
+                            <div class="sppb-addon-content">
+                                <div><strong>@news_item.news_title</strong><br></div>
+                                @*<strong><p class="sppb-block-blocknumber text-break" style="font-size:10pt">@news_item.news_date.ToString("dddd, dd MMMM yyyy")</p></strong>*@
+
+                                <div class="p-4">
+                                    <p style="font-size:10pt" class="mt-2 mb-2 text-justify">@news_item.news_details</p>
+
+                                    @if (@news_item.news_image != null)
+                                    {
+                                        
+                                            <img src="/@news_item.news_image" class="img-fluid small"  />
+                                        
+
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                }
+            }
+        </div>
+    </div>
+</div>
+

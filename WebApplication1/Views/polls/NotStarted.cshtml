@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "NotStarted";
+}
+
+<center>
+    <div class="w-75 mt-4 alert alert-secondary" style="margin-bottom:100px" role="alert">
+        <img style="height:100px" ;width:100px" src="~/Content/Images/GIFS/alert.gif" alt="successfully-voted" />
+        <h4 class="alert-heading mt-2 mb-0">Voting has not started yet. <br>The ballots will be open on @TempData["start_date_time"]</h4>
+        <p></p>
+        <hr />
+    </div>
+</center>
+
+<script type="text/javascript" language="javascript">
+     function DisableBackButton() {
+       window.history.forward()
+      }
+     DisableBackButton();
+     window.onload = DisableBackButton;
+     window.onpageshow = function(evt) { if (evt.persisted) DisableBackButton() }
+     window.onunload = function() { void (0) }
+</script>

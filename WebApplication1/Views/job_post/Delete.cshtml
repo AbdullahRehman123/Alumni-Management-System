@@ -1,0 +1,94 @@
+﻿@model WebApplication1.Models.job_post
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+<div class="mt-2 p-5 rounded-3">
+
+    <h3 class="">Are you sure you want to delete this Job?</h3>
+    <div class="">
+
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.title)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.title)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.category)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.category)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.post_type)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.post_type)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.location)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.location)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.description)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.description)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.salary)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.salary)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.tags)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.tags)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.image_path)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.image_path)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="sppb-btn btn-danger" /> |
+                @Html.ActionLink("Back to List", "view_job_posts","Home")
+            </div>
+        }
+    </div>
+</div>
+<script src="~/Content/util.js"></script>
+<script src="~/Content/menu-aim.js"></script>
+<script src="~/Content/main.js"></script>

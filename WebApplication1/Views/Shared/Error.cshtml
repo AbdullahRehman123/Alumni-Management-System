@@ -1,0 +1,24 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+@{
+    ViewBag.Title = "Error";
+}
+
+    <center>
+        <div style="margin-bottom:120px" class="w-75 mt-4 alert alert-danger" role="alert">
+
+            <img style="height:100px;width:100px" src="~/Content/Images/GIFS/alert.gif" alt="alert" />
+
+            <h4 class="alert-heading mt-2 mb-0">An error occurred while processing your request @ViewBag.ErrorMessage.</h4>
+            @if (Model != null)
+            {
+                <div>
+                    @Model.Exception.Message
+                    <br />
+                    @Model.ControllerName
+                </div>
+            }
+
+            <p></p>
+        </div>
+    </center>
+

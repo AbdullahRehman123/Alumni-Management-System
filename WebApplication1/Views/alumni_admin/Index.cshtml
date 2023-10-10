@@ -1,0 +1,83 @@
+﻿@model IEnumerable<WebApplication1.Models.alumni_admin>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+<div class="p-2 mt-5">
+
+    <p>
+        @Html.ActionLink("Register New Admin", "Create")
+    </p>
+    <div class="small table-responsive mt-2">
+        <table id="admins-table" class="table table-secondary table-responsive-lg">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.is_active)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.adm_name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.adm_email)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.campus)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.created_at)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.created_by)
+                        </th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            @if (item.is_active ?? false)
+                            {
+                                <td class="bg-success text-white">
+                                    @Html.DisplayTextFor(modelItem => item.is_active)
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    @Html.DisplayTextFor(modelItem => item.is_active)
+                                </td>
+
+                            }
+                            <td>
+                                @Html.DisplayFor(modelItem => item.adm_name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.adm_email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.campus)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.created_at)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.created_by)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.adm_id }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.adm_id })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="~/Content/util.js"></script>
+    <script src="~/Content/menu-aim.js"></script>
+    <script src="~/Content/main.js"></script>

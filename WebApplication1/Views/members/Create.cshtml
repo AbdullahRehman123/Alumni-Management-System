@@ -1,0 +1,386 @@
+﻿@model WebApplication1.Models.member
+@using System.Configuration;
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_RegisterAlumniLayoutPage.cshtml";
+
+}
+@Scripts.Render("~/bundles/bootstrap")
+
+<style>
+
+    .input-group-text {
+        font-size: 1.2rem !important;
+    }
+
+    .secondary-color {
+        color: #393780;
+    }
+
+    .text-danger {
+        font-size: 12px;
+    }
+</style>
+<style>
+    .alert {
+        display: none;
+        z-index: 500;
+    }
+
+    .login-form {
+        width: 340px;
+        margin: 50px auto;
+    }
+
+    .checkBox {
+        margin-top: 20px;
+    }
+
+    .login-form form {
+        margin-bottom: 15px;
+        background: #f7f7f7;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        padding: 30px;
+        top: 50%;
+    }
+
+    .login-form h2 {
+        margin: 0 0 15px;
+    }
+
+    .form-control {
+        min-height: 38px;
+        border-radius: 2px;
+        font-size: 13px;
+        display: block;
+    }
+
+    .btn {
+        min-height: 38px;
+        border-radius: 2px;
+    }
+
+    .input-group-addon .fa {
+        font-size: 18px;
+    }
+
+    .btn {
+        font-size: 15px;
+    }
+
+    .bottom-action {
+        font-size: 14px;
+    }
+
+    .text-danger {
+        font-size: 12px;
+        font-weight: 500;
+    }
+
+    .wrapper {
+        max-width: 1000px !important;
+        margin: 30px 30px;
+        padding: 30px 45px;
+        box-shadow: 5px 15px 15px #3535356b;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    body {
+        background-image: url('/Content/Images/FUI-bg.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
+
+<form id="alumni-register-form" class="needs-validation" method="post" novalidate>
+
+    @Html.AntiForgeryToken()
+
+
+    <div class="wrapper well form-horizontal m-5 small" style="background-color: rgba(245,245,245,.9);">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="d-flex mx-5 row">
+            <div class="col-md-8 mr-auto p-2 justify-content-center">
+                <div class="form-group">
+                    <h3 class="link-secondary">Alumni Registration</h3>
+                    <hr />
+
+                </div>
+            </div>
+
+            <div class="col-md-4 p-2 secondary-color">
+                Already Registered?
+                <button type="button" class="sppb-btn  sppb-btn-primary sppb-btn-rounded modal-link" data-toggle="modal" data-target="#myModal">Login</button>
+            </div>
+        </div>
+
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-5 mt-md-0">
+                <div class="form-group mx-5">
+                    @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "control-label secondary-color" })
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <span class="fa fa-user"></span>
+                            </span>
+                        </div>
+
+                        @Html.EditorFor(model => model.name, new { htmlAttributes = new { required = "required", @class = "form-control wrap", @id = "name", @name = "name", @maxlength = "50" } })
+
+                    </div>
+                    @Html.ValidationMessageFor(model => model.name, "", new { @class = "valid-feedback text-danger" })
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="form-group mx-5">
+                    @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label secondary-color" })
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <span class="fa fa-envelope"></span>
+                            </span>
+                        </div>
+
+                        @Html.EditorFor(model => model.email, new { htmlAttributes = new { required = "required", @class = "form-control wrap", @id = "email", @name = "email", @maxlength = "50" } })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.email, "", new { @class = "valid-feedback text-danger" })
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row d-flex justify-content-center">
+
+            <div class="col-md-5">
+                <div class="form-group mx-5">
+                    @Html.LabelFor(model => model.mobile_no, htmlAttributes: new { @class = "control-label secondary-color" })
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <span class="fa fa-phone"></span>
+                            </span>
+                        </div>
+
+                        @Html.EditorFor(model => model.mobile_no, new { htmlAttributes = new { required = "required", @class = "form-control wrap", @id = "mobile_no", @name = "mobile_no", @placeholder = "03xxxxxxxxx", @maxlength = "11" } })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.mobile_no, "", new { @class = "valid-feedback text-danger" })
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="form-group mx-5">
+                    @Html.LabelFor(model => model.registration_no, htmlAttributes: new { @class = "control-label secondary-color" })
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <span class="fa fa-address-card"></span>
+                            </span>
+                        </div>
+                        @Html.EditorFor(model => model.registration_no, new { htmlAttributes = new { required = "required", @class = "form-control wrap", @id = "registeration_no", @name = "registeration_no", @placeholder = "eg. F18BCSE091", @maxlength = "25" } })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.registration_no, "", new { @class = "valid-feedback text-danger" })
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row d-flex justify-content-center">
+
+            @{
+                string configvalue1 = ConfigurationManager.AppSettings["campus_list"];
+                string[] values = configvalue1.Split(',').Select(sValue => sValue.Trim()).ToArray();
+                List<SelectListItem> campuses = new List<SelectListItem>();
+                for (int i = 0; i < values.Length; i++)
+                {
+                    if (i == 0)
+                    {
+                        campuses.Add(new SelectListItem { Text = values[i], Selected = true, Disabled = true });
+                    }
+                    else
+                    {
+                        campuses.Add(new SelectListItem { Text = values[i], Value = values[i] });
+                    }
+                }
+            }
+
+            <div class="col-md-5">
+                <div class="form-group mx-5">
+                    @Html.LabelFor(model => model.campus, htmlAttributes: new { @class = "control-label secondary-color" })
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <span class="fa fa-building"></span>
+                            </span>
+                        </div>
+                        @Html.DropDownListFor(model => model.campus, campuses, new { @class = "form-control dropdown-toggle", @required = "required" })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.campus, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            @{
+                string configvalue2 = ConfigurationManager.AppSettings["categories_list"];
+                string[] values2 = configvalue2.Split(',').Select(sValue => sValue.Trim()).ToArray();
+                List<SelectListItem> categories = new List<SelectListItem>();
+                for (int i = 0; i < values2.Length; i++)
+                {
+                    if (i == 0)
+                    {
+                        categories.Add(new SelectListItem { Text = values2[i], Selected = true, Disabled = true });
+                    }
+                    else
+                    {
+                        categories.Add(new SelectListItem { Text = values2[i], Value = values2[i] });
+                    }
+                }
+            }
+            <div class="col-md-5">
+                <div class="form-group mx-5">
+                    @Html.LabelFor(model => model.category_studied, htmlAttributes: new { @class = "control-label secondary-color" })
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <span class="fa fa-graduation-cap"></span>
+                            </span>
+                        </div>
+                        @Html.DropDownListFor(model => model.category_studied, categories, new { @class = "form-control dropdown-toggle", @required = "required" })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.category_studied, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        
+        <div class="row d-flex justify-content-center">
+            @{
+                string configvalue3 = ConfigurationManager.AppSettings["fusst_bs_programs_list"];
+                string[] values3 = configvalue3.Split(',').Select(sValue => sValue.Trim()).ToArray();
+                List<SelectListItem> bs_programs_list = new List<SelectListItem>();
+                bs_programs_list.Add(new SelectListItem { Text = values3[0], Selected = true, Disabled = true });
+            }
+            <div class="col-md-5">
+                <div class="form-group mx-5">
+                    @Html.LabelFor(model => model.program_studied, htmlAttributes: new { @class = "control-label secondary-color" })
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <span class="fa fa-graduation-cap"></span>
+                            </span>
+                        </div>
+                        @Html.DropDownListFor(model => model.program_studied, bs_programs_list, new { @class = "form-control dropdown-toggle", @required = "required" })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.program_studied, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="form-group mx-5">
+                    @Html.LabelFor(model => model.degree_completion_date, htmlAttributes: new { @class = "control-label secondary-color" })
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <span class="fa fa-calendar"></span>
+                            </span>
+                        </div>
+                        @Html.EditorFor(model => model.degree_completion_date, new { htmlAttributes = new { @class = "form-control date-picker", required = "required", @type = "date" } })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.degree_completion_date, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="row d-flex justify-content-center">
+
+            <div class="col-md-5">
+                <div class="form-group mx-5">
+                    @Html.LabelFor(model => model.org_comp_working_in, htmlAttributes: new { @class = "control-label secondary-color" })
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <span class="fa fa-university"></span>
+                            </span>
+                        </div>
+                        @Html.EditorFor(model => model.org_comp_working_in, new { htmlAttributes = new { @class = "form-control", required = "required", @maxlength = "50" } })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.org_comp_working_in, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="form-group mx-5">
+                    @Html.LabelFor(model => model.designation, htmlAttributes: new { @class = "control-label secondary-color" })
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <span class="fa fa-star"></span>
+                            </span>
+                        </div>
+                        @Html.EditorFor(model => model.designation, new { htmlAttributes = new { @class = "form-control", required = "required", @maxlength = "50" } })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.designation, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="row d-flex justify-content-center">
+
+            <div class="col-md-5 ">
+                <div class="form-group mx-5">
+                    @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label secondary-color" })
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <span class="fa fa-lock"></span>
+                            </span>
+                        </div>
+                        @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", required = "required", @maxlength = "50", @id = "password", @name = "password", @type = "password" } })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="form-group mx-5">
+                    @Html.LabelFor(model => model.confirm_password, htmlAttributes: new { @class = "control-label secondary-color" })
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <span class="fa fa-lock"></span>
+                            </span>
+                        </div>
+                        @Html.EditorFor(model => model.confirm_password, new { htmlAttributes = new { @class = "form-control", required = "required", @maxlength = "50", @id = "confirm_password", @name = "confirm_password", @type = "password" } })
+
+                    </div>
+                    @Html.ValidationMessageFor(model => model.confirm_password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group d-flex justify-content-center mt-5">
+            <div>
+                <div class="col-md-5">
+                    <input type="submit" id="register-button" value="Register" class="sppb-btn sppb-btn-primary sppb-btn-rounded mt-2" />
+                </div>
+                <div class="col-md-5">
+                    <input type="reset" id="reset-button" value="Reset" class="sppb-btn btn-dark sppb-btn-rounded mx-2 mt-2" />
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>
+<style>
+    .modal-header .close {
+        font-size: 25px;
+    }
+
+    .modal-header {
+        flex-direction: column-reverse !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+</style>
+
+<div class="position-fixed m-2 alert-dismissable alert alert-success" role="alert" style="margin-left:auto;margin-right:0 ">
+    <h2 class="alert-heading">Registered Successfuly</h2>
+    <p class="mb-0">Wait for Verification by Administration</p>
+</div>
+

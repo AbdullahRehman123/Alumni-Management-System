@@ -1,0 +1,121 @@
+﻿@model WebApplication1.Models.alumni_admin
+@using System.Configuration;
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+<div class="p-2 mt-5">
+
+    <h2>Edit Admin Record</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.adm_name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.adm_name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.adm_name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.adm_email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.adm_email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.adm_email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.is_active, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-6">
+                    @Html.DropDownListFor(m => m.is_active, new List<SelectListItem>() { new SelectListItem { Text = "True", Value = "true", Selected = true }, new SelectListItem { Text = "False", Value = "false", Selected = false } }, htmlAttributes: new { @class = "col-md-12" })
+                    @Html.ValidationMessageFor(model => model.is_active, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @{
+                string configvalue1 = ConfigurationManager.AppSettings["campus_list"];
+                string[] values = configvalue1.Split(',').Select(sValue => sValue.Trim()).ToArray();
+                List<SelectListItem> campuses = new List<SelectListItem>();
+                for (int i = 0; i < values.Length; i++)
+                {
+                    if (i == 0)
+                    {
+                        campuses.Add(new SelectListItem { Text = values[i], Selected = true, Disabled = true });
+                    }
+                    else
+                    {
+                        campuses.Add(new SelectListItem { Text = values[i], Value = values[i] });
+                    }
+                }
+            }
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.campus, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-6">
+                    @Html.DropDownListFor(model => model.campus, campuses, htmlAttributes: new { @class = "col-md-12"})
+                    @Html.ValidationMessageFor(model => model.campus, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.created_at, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.created_at, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.created_at, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.created_by, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.created_by, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.created_by, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.updated_at, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.updated_at, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.updated_at, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.updated_by, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.updated_by, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.updated_by, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @Html.HiddenFor(model => model.adm_id)
+            @Html.HiddenFor(model => model.adm_guid)
+            @Html.HiddenFor(model => model.adm_password)
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-6">
+                    <input type="submit" value="Save" class="sppb-btn" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+</div>
+
+<script src="~/Content/util.js"></script>
+<script src="~/Content/menu-aim.js"></script>
+<script src="~/Content/main.js"></script>

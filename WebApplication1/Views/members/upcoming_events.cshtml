@@ -1,0 +1,46 @@
+﻿@model IEnumerable<WebApplication1.Models.upcoming_event>
+
+@{
+    ViewBag.Title = "upcoming_events";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Scripts.Render("~/bundles/bootstrap")
+<script src="~/Content/util.js"></script>
+<script src="~/Content/menu-aim.js"></script>
+<script src="~/Content/main.js"></script>
+
+<div class="sppb-col-md-12 sppb-col-sm-12" id="column-wrap-id-1490598591124">
+    <div id="column-id-1490598591124" class="sppb-column educon-box-shadow">
+        <div class="sppb-column-addons">
+            <div id="sppb-addon-1490598591142" class="clearfix">
+                <div class="sppb-addon sppb-addon-header border-heading-style sppb-text-left">
+                    <h3 class="sppb-addon-title">Upcoming events</h3>
+                </div>
+            </div>
+            @foreach (var item in Model)
+            {
+                if (item.event_expir_date > DateTime.Now || item.event_expir_date == DateTime.Now)
+                {
+                    <div id="sppb-addon-1552399627275" class="clearfix">
+                        <div class="sppb-addon sppb-addon-blocknumber ">
+                            <div class="sppb-addon-content">
+                                <div class="sppb-blocknumber sppb-media">
+
+                                    @*<p class="sppb-block-blocknumber text-break" style="font-size:10pt">@item.event_date_time.ToString("dddd, dd MMMM yyyy")</p>*@
+
+                                    <div class="sppb-media-body sppb-text-left"><h3 class="sppb-media-heading">@item.event_title</h3>@item.event_details</div>
+                                    @if (@item.event_link != null)
+                                    {
+                                        <div><a class="sppb-block-blocknumber text-break link-secondary" href="@item.event_link" target="_blank">@item.event_link</a></div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Closed";
+}
+
+<center>
+    <div class="w-75 mt-4 alert alert-danger" style="margin-bottom:100px" role="alert">
+        <img style="height:100px" ;width:100px" src="~/Content/Images/GIFS/clock.gif" alt="successfully-voted" />
+        <h4 class="alert-heading mt-2 mb-0">Voting time has expired</h4>
+        <p></p>
+        <hr />
+        <p class="mb-0">Results will be announced soon</p>
+
+    </div>
+</center>
+
+<script type="text/javascript" language="javascript">
+     function DisableBackButton() {
+       window.history.forward()
+      }
+     DisableBackButton();
+     window.onload = DisableBackButton;
+     window.onpageshow = function(evt) { if (evt.persisted) DisableBackButton() }
+     window.onunload = function() { void (0) }
+</script>

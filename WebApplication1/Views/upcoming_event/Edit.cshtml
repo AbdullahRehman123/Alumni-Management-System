@@ -1,0 +1,145 @@
+﻿@model WebApplication1.Models.upcoming_event
+@using System.Configuration
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+
+<script src="~/Content/util.js"></script>
+<script src="~/Content/menu-aim.js"></script>
+<script src="~/Content/main.js"></script>
+
+<div class="mt-5 p-2">
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+   
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.event_id)
+    <h4>Edit Upcoming Event</h4>
+    @*<div class="form-group">
+
+            @Html.LabelFor(model => model.event_guid, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+
+                @Html.EditorFor(model => model.event_guid, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.event_guid, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.event_title, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-6">
+            @Html.EditorFor(model => model.event_title, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.event_title, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.event_date_time, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-6">
+            @Html.EditorFor(model => model.event_date_time, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.event_date_time, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.event_details, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-6">
+            @Html.EditorFor(model => model.event_details, new { htmlAttributes = new { @class = "form-control", @style = "font-size:10pt", @rows = "5" } })
+            @Html.ValidationMessageFor(model => model.event_details, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    @{
+        string configvalue1 = ConfigurationManager.AppSettings["campus_list"];
+        string[] values = configvalue1.Split(',').Select(sValue => sValue.Trim()).ToArray();
+        List<SelectListItem> campuses = new List<SelectListItem>();
+        for (int i = 0; i < values.Length; i++)
+        {
+            if (i == 0)
+            {
+                campuses.Add(new SelectListItem { Text = values[i], Selected = true, Disabled = true });
+            }
+            else
+            {
+                campuses.Add(new SelectListItem { Text = values[i], Value = values[i] });
+            }
+        }
+    }
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.campus, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-6">
+            @Html.EditorFor(model => model.campus, new { htmlAttributes = new { @class = "col-md-12", @readonly = "readonly" } })
+            @Html.ValidationMessageFor(model => model.campus, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.event_link, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-6">
+            @Html.EditorFor(model => model.event_link, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.event_link, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.event_expir_date, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-6">
+            @Html.EditorFor(model => model.event_expir_date, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.event_expir_date, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.created_at, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-6">
+            @Html.EditorFor(model => model.created_at, new { htmlAttributes = new { @class = "form-control",@readonly = "readonly" } })
+            @Html.ValidationMessageFor(model => model.created_at, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.created_by, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-6">
+            @Html.EditorFor(model => model.created_by, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            @Html.ValidationMessageFor(model => model.created_by, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.updated_at, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-6">
+            @Html.EditorFor(model => model.updated_at, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            @Html.ValidationMessageFor(model => model.updated_at, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.updated_by, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-6">
+            @Html.EditorFor(model => model.updated_by, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            @Html.ValidationMessageFor(model => model.updated_by, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-6">
+            <input type="submit" value="Save" class="sppb-btn" />
+        </div>
+    </div>
+</div>
+    }
+
+
+</div>

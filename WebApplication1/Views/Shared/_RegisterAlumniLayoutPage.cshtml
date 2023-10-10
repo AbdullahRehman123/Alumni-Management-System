@@ -1,0 +1,1660 @@
+﻿@model WebApplication1.Models.member
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <noscript>
+        Hey, enable javascript or the page will not work.
+    </noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css" integrity="sha512-xnwMSDv7Nv5JmXb48gKD5ExVOnXAbNpBWVAXTo9BJWRJRygG8nwQI81o5bYe8myc9kiEF/qhMGPjkSsF06hyHA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--<meta charset="utf-8" />
+    <link runat="server" rel="shortcut icon" href="/Content/FUI-PNG.png" type="image/x-icon" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>-->
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <!-- Custom styles for this template -->
+    <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" rel="stylesheet">-->
+    <!-- Custom styles for this template -->
+    <!--<title>FUI Alumni Association Elections 2023</title>
+
+    <style>
+            .bi {
+      display: inline-block;
+      width: 1rem;
+      height: 1rem;
+    }
+
+    /*
+     * Sidebar
+     */
+
+    /*@@media (min-width: 768px) {
+      .sidebar .offcanvas-lg {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 48px;
+      }
+      .navbar-search {
+        display: block;
+      }
+    }*/
+
+    /*.sidebar .nav-link {
+      font-size: .875rem;
+      font-weight: 500;
+    }
+
+    .sidebar .nav-link.active {
+      color: #2470dc;
+    }*/
+
+    /*.sidebar-heading {
+      font-size: .75rem;
+    }*/
+
+    /*
+     * Navbar
+     */
+
+    /*.navbar-brand {
+      padding-top: .75rem;
+      padding-bottom: .75rem;
+      background-color: rgba(0, 0, 0, .25);
+      box-shadow: inset 1px 0 0 rgba(0, 0, 0, .25);
+    }
+
+    .navbar .form-control {
+      padding: .75rem 1rem;
+    }*/
+
+    </style>-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- head -->
+    <!-- Removed by WebCopy --><!--<base href="http://alumni.fui.edu.pk/">--><!-- Removed by WebCopy -->
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="description" content="Alumni Portal">
+    <meta name="generator" content="Joomla! - Open Source Content Management">
+    <title>FUI Alumni Network</title>
+    <link href="~/Content/Images/ICON/FUI-PNG.png" rel="icon">
+    <link href="index.php/component/search/index.htm?id=35&amp;Itemid=563&amp;format=opensearch" rel="search" title="Search FUI Alumni Portal" type="application/opensearchdescription+xml">
+    <link href="/Content/templates/alumni_fu/css/owl.carousel.css" rel="stylesheet" type="text/css">
+    <link href="/Content/templates/alumni_fu/css/owl.theme.css" rel="stylesheet" type="text/css">
+    <link href="/Content/templates/alumni_fu/css/owl.transitions.css" rel="stylesheet" type="text/css">
+    <link href="/Content/templates/alumni_fu/css/slide-animate.css" rel="stylesheet" type="text/css">
+    <link href="/Content/css?family=Open+Sans:300,300italic,regular,italic,600,600italic,700,700italic,800,800italic&amp;subset=latin" rel="stylesheet" type="text/css">
+    <link href="/Content/cache/com_templates/templates/alumni_fu/6f825ee5484e34b68efc65ab695d96a6.css" rel="stylesheet" type="text/css">
+    <link href="/Content/media/com_acymailing/css/module_default.css?v=1522670730" rel="stylesheet" type="text/css">
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/style.css">
+    <style type="text/css">
+
+
+        .fu-builder .page-content #section-id-1484209043393 {
+            margin-top: 0px;
+            margin-right: 0px;
+            margin-bottom: 0px;
+            margin-left: 0px;
+        }
+
+        #sppb-addon-1490790359345 {
+            box-shadow: 0px 0px 0px 0px #fff;
+        }
+
+        .fu-builder .page-content #section-id-1490337547139 {
+            padding-top: 10px;
+            padding-right: 10px;
+            padding-bottom: 10px;
+            padding-left: 10px;
+            margin-top: 0px;
+            margin-right: 0px;
+            margin-bottom: 0px;
+            margin-left: 0px;
+        }
+
+        #column-id-1490337547140 {
+            background-image: url(~/Content/images/2017/03/24/cta-bg.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: inherit;
+            background-position: 0 0;
+        }
+
+        #sppb-addon-1490339051123 {
+            color: rgba(255, 255, 255, 1);
+        }
+
+            #sppb-addon-1490339051123 .sppb-addon-title {
+                font-size: 14px;
+                line-height: 14px;
+            }
+
+            #sppb-addon-1490339051123 .sppb-addon-cta {
+                padding: 40px 20px;
+            }
+
+            #sppb-addon-1490339051123 .sppb-cta-subtitle {
+                font-size: 26px;
+                line-height: 26px;
+            }
+
+            #sppb-addon-1490339051123 #btn-1490339051123.sppb-btn-primary {
+                letter-spacing: 1px;
+            }
+
+        .fu-builder .page-content #section-id-1490598591122 {
+            padding-top: 50px;
+            padding-right: 0px;
+            padding-bottom: 30px;
+            padding-left: 0px;
+            margin-top: 0px;
+            margin-right: 0px;
+            margin-bottom: 0px;
+            margin-left: 0px;
+        }
+
+        #column-id-1490598591123 {
+            padding-top: 47px;
+            padding-right: 40px;
+            padding-bottom: 50px;
+            padding-left: 40px;
+            background-color: rgba(255, 255, 255, 1);
+        }
+
+        #sppb-addon-1490599698073 .sppb-addon-title {
+            margin-bottom: 20px;
+            color: rgba(37, 37, 37, 1);
+            font-size: 22px;
+            line-height: 22px;
+            line-height: 25px;
+            text-transform: uppercase;
+            font-weight: 400;
+        }
+
+        #column-id-1490598591124 {
+            padding-top: 47px;
+            padding-right: 40px;
+            padding-bottom: 50px;
+            padding-left: 40px;
+            background-color: rgba(255, 255, 255, 1);
+        }
+
+        #sppb-addon-1490598591142 {
+            color: rgba(21, 21, 21, 1);
+            border-radius: 268px;
+        }
+
+            #sppb-addon-1490598591142 .sppb-addon-title {
+                font-size: 24px;
+                line-height: 24px;
+                text-transform: uppercase;
+                font-weight: 600;
+            }
+
+            #sppb-addon-1490598591142 h3.sppb-addon-title {
+                margin: 0px 0px 38px 0px;
+                padding: 0px 0px 0px 0px;
+            }
+
+        @@media (min-width:768px) and (max-width:991px) {
+            #sppb-addon-1490598591142 h3.sppb-addon-title {
+            }
+        }
+
+        @@media (max-width:767px) {
+            #sppb-addon-1490598591142 h3.sppb-addon-title {
+            }
+        }
+
+        #sppb-addon-1552399627275 {
+            box-shadow: 0 0 0 0 #ffffff;
+            margin: 0 0 30px 0;
+        }
+
+        @@media (min-width:768px) and (max-width:991px) {
+            #sppb-addon-1552399627275 {
+                margin-bottom: 20px;
+            }
+        }
+
+        @@media (max-width:767px) {
+            #sppb-addon-1552399627275 {
+                margin-bottom: 10px;
+            }
+        }
+
+        #sppb-addon-1552399627275 .sppb-blocknumber-number {
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            background-color: #298bb1;
+            color: #FFFFFF;
+        }
+
+        @@media (min-width:768px) and (max-width:991px) {
+            #sppb-addon-1552399627275 .sppb-blocknumber-number {
+                width: 48px;
+                height: 48px;
+                line-height: 48px;
+            }
+        }
+
+        @@media (max-width:767px) {
+            #sppb-addon-1552399627275 .sppb-blocknumber-number {
+                width: 48px;
+                height: 48px;
+                line-height: 48px;
+            }
+        }
+
+        #column-id-1490598591125 {
+            padding-top: 47px;
+            padding-right: 40px;
+            padding-bottom: 45px;
+            padding-left: 40px;
+            background-color: rgba(255, 255, 255, 1);
+        }
+
+        #sppb-addon-1490612695909 {
+            color: rgba(21, 21, 21, 1);
+        }
+
+            #sppb-addon-1490612695909 .sppb-addon-title {
+                font-size: 24px;
+                line-height: 24px;
+                text-transform: uppercase;
+                font-weight: 600;
+            }
+
+            #sppb-addon-1490612695909 h3.sppb-addon-title {
+                margin: 0px 0px 38px 0px;
+                padding: 0px 0px 0px 0px;
+                text-shadow: 0px 0px 0px #fff;
+            }
+
+        @@media (min-width:768px) and (max-width:991px) {
+            #sppb-addon-1490612695909 h3.sppb-addon-title {
+            }
+        }
+
+        @@media (max-width:767px) {
+            #sppb-addon-1490612695909 h3.sppb-addon-title {
+            }
+        }
+
+        #sppb-addon-1678861647105 {
+            box-shadow: 0 0 0 0 #ffffff;
+            margin: 0 0 30px 0;
+        }
+
+        @@media (min-width:768px) and (max-width:991px) {
+            #sppb-addon-1678861647105 {
+                margin-bottom: 20px;
+            }
+        }
+
+        @@media (max-width:767px) {
+            #sppb-addon-1678861647105 {
+                margin-bottom: 10px;
+            }
+        }
+
+        .fu-builder .page-content #section-id-1484214606897 {
+            padding-top: 0px;
+            padding-right: 0px;
+            padding-bottom: 40px;
+            padding-left: 0px;
+            margin-top: 0px;
+            margin-right: 0px;
+            margin-bottom: 0px;
+            margin-left: 0px;
+        }
+
+        #column-id-1484214606898 {
+            padding-top: 90px;
+        }
+
+        #sppb-addon-1490175770698 {
+            color: rgba(21, 21, 21, 1);
+        }
+
+            #sppb-addon-1490175770698 .sppb-addon-title {
+                font-size: 16px;
+                line-height: 16px;
+                text-transform: uppercase;
+                font-weight: 600;
+            }
+
+            #sppb-addon-1490175770698 h2.sppb-addon-title {
+                margin: 0px 0px 32px 0px;
+                padding: 0px 0px 0px 0px;
+            }
+
+        @@media (min-width:768px) and (max-width:991px) {
+            #sppb-addon-1490175770698 h2.sppb-addon-title {
+            }
+        }
+
+        @@media (max-width:767px) {
+            #sppb-addon-1490175770698 h2.sppb-addon-title {
+            }
+        }
+
+        #sppb-addon-1484214606903 .sppb-addon-title {
+            margin-bottom: 18px;
+            color: rgba(21, 21, 21, 1);
+            font-size: 18px;
+            line-height: 18px;
+            text-transform: uppercase;
+            font-weight: 400;
+        }
+
+        #column-id-1484214606899 {
+            padding-top: 90px;
+        }
+
+        #sppb-addon-1552025860138 {
+            color: rgba(21, 21, 21, 1);
+        }
+
+            #sppb-addon-1552025860138 .sppb-addon-title {
+                font-size: 16px;
+                line-height: 16px;
+                text-transform: uppercase;
+                font-weight: 600;
+            }
+
+            #sppb-addon-1552025860138 h2.sppb-addon-title {
+                margin: 0px 0px 32px 0px;
+                padding: 0px 0px 0px 0px;
+            }
+
+        @@media (min-width:768px) and (max-width:991px) {
+            #sppb-addon-1552025860138 h2.sppb-addon-title {
+            }
+        }
+
+        @@media (max-width:767px) {
+            #sppb-addon-1552025860138 h2.sppb-addon-title {
+            }
+        }
+
+        #sppb-addon-1490173561414 .sppb-addon-title {
+            margin-bottom: 18px;
+            color: rgba(21, 21, 21, 1);
+            font-size: 18px;
+            line-height: 18px;
+            text-transform: uppercase;
+            font-weight: 400;
+        }
+
+        #sppb-addon-1490173561414 #btn-1490173561414.sppb-btn-link {
+            text-transform: uppercase;
+        }
+
+        .fu-builder .page-content #section-id-1551950610877 {
+            padding-top: 10px;
+            padding-right: 0px;
+            padding-bottom: 10px;
+            padding-left: 0px;
+            margin-top: 0px;
+            margin-right: 0px;
+            margin-bottom: 0px;
+            margin-left: 0px;
+        }
+
+        #column-id-1551950610876 {
+            box-shadow: 0 0 0 0 #fff;
+        }
+
+        #sppb-addon-1551951476846 {
+            box-shadow: 0 0 0 0 #ffffff;
+            margin: 0 0 30px 0;
+        }
+
+            #sppb-addon-1551951476846 .sppb-addon-title {
+                font-size: 32px;
+                line-height: 32px;
+            }
+
+        @@media (min-width:768px) and (max-width:991px) {
+            #sppb-addon-1551951476846 {
+                margin-bottom: 20px;
+            }
+        }
+
+        @@media (max-width:767px) {
+            #sppb-addon-1551951476846 {
+                margin-bottom: 10px;
+            }
+        }
+
+        body {
+            font-family: Open Sans, sans-serif;
+            font-size: 16px;
+            font-weight: normal;
+        }
+
+        a:link {
+            text-decoration: none;
+        }
+
+        a:visited {
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        a:active {
+            text-decoration: none;
+        }
+
+        .navbar-global {
+            background-color: indigo;
+        }
+
+            .navbar-global .navbar-brand {
+                color: white;
+            }
+
+            .navbar-global .navbar-user > li > a {
+                color: white;
+            }
+
+        .navbar-primary {
+            background-color: #333;
+            bottom: 0px;
+            left: 0px;
+            position: absolute;
+            top: 51px;
+            width: 200px;
+            z-index: 8;
+            overflow: hidden;
+            -webkit-transition: all 0.1s ease-in-out;
+            -moz-transition: all 0.1s ease-in-out;
+            transition: all 0.1s ease-in-out;
+        }
+
+            .navbar-primary.collapsed {
+                width: 60px;
+            }
+
+                .navbar-primary.collapsed .glyphicon {
+                    font-size: 22px;
+                }
+
+                .navbar-primary.collapsed .nav-label {
+                    display: none;
+                }
+
+        .btn-expand-collapse {
+            position: absolute;
+            display: block;
+            left: 0px;
+            bottom: 0;
+            width: 100%;
+            padding: 8px 0;
+            border-top: solid 1px #666;
+            color: grey;
+            font-size: 20px;
+            text-align: center;
+        }
+
+            .btn-expand-collapse:hover,
+            .btn-expand-collapse:focus {
+                background-color: #222;
+                color: white;
+            }
+
+            .btn-expand-collapse:active {
+                background-color: #111;
+            }
+
+        .navbar-primary-menu,
+        .navbar-primary-menu li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+            .navbar-primary-menu li a {
+                display: block;
+                padding: 10px 18px;
+                text-align: left;
+                border-bottom: solid 1px #444;
+                color: #ccc;
+            }
+
+                .navbar-primary-menu li a:hover {
+                    background-color: #000;
+                    text-decoration: none;
+                    color: white;
+                }
+
+                .navbar-primary-menu li a .glyphicon {
+                    margin-right: 6px;
+                }
+
+                .navbar-primary-menu li a:hover .glyphicon {
+                    color: orchid;
+                }
+
+        .main-content {
+            margin-top: 60px;
+            margin-left: 200px;
+            padding: 20px;
+        }
+
+        .collapsed + .main-content {
+            margin-left: 60px;
+        }
+        /* h1 {
+            font-family: Open Sans, sans-serif;
+            font-size: 80px;
+            font-weight: 700;
+        }
+
+        h2 {
+            font-family: Open Sans, sans-serif;
+            font-size: 36px;
+            font-weight: normal;
+        }
+
+        h3 {
+            font-family: Open Sans, sans-serif;
+            font-size: 24px;
+            font-weight: normal;
+        }
+
+        h4 {
+            font-family: Open Sans, sans-serif;
+            font-size: 16px;
+            font-weight: normal;
+        }*/
+
+        #sp-top-bar {
+            background-color: #f5f5f5;
+        }
+
+        #sp-bottom {
+            padding: 100px 0px 85px;
+        }
+    </style>
+    <style>
+        /*
+                * Specific styles of signin component
+                */
+        /*
+                * General styles
+                */
+
+
+        .card-container.card {
+            padding: 20px 40px;
+        }
+
+        /*
+                * Card component
+                */
+        .card {
+            background-color: #F7F7F7;
+            /* just in case there no content*/
+            padding: 20px 25px 30px;
+            /* shadows and rounded borders */
+            -moz-border-radius: 2px;
+            -webkit-border-radius: 2px;
+            border-radius: 2px;
+            -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+            -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .profile-img-card {
+            width: 96px;
+            height: 96px;
+            margin: 0 auto 10px;
+            display: block;
+            -moz-border-radius: 50%;
+            -webkit-border-radius: 50%;
+            border-radius: 50%;
+        }
+
+        /*
+                * Form styles
+                */
+        .profile-name-card {
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+            min-height: 1em;
+        }
+
+        .reauth-email {
+            display: block;
+            color: #404040;
+            line-height: 2;
+            margin-bottom: 10px;
+            font-size: 14px;
+            text-align: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        .form-signin #inputEmail,
+        .form-signin #inputPassword {
+            direction: ltr;
+            height: 40px;
+            font-size: 14px;
+        }
+
+        .form-signin input[type=email],
+        .form-signin input[type=password],
+        .form-signin input[type=text],
+        .form-signin button {
+            width: 100%;
+            display: block;
+            margin-bottom: 10px;
+            z-index: 1;
+            position: relative;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        .form-signin .form-control:focus {
+            border-color: rgb(104, 145, 162);
+            outline: 0;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
+            box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
+        }
+
+        .forgot-password {
+            color: rgb(104, 145, 162);
+        }
+
+            .forgot-password:hover,
+            .forgot-password:active,
+            .forgot-password:focus {
+                color: rgb(12, 97, 33);
+            }
+
+        .vertical-alignment-helper {
+            display: table;
+            height: 100%;
+            width: 100%;
+            pointer-events: none;
+        }
+
+        .vertical-align-center {
+            /* To center vertically */
+            display: table-cell;
+            vertical-align: middle;
+            pointer-events: none;
+        }
+
+        .modal-content {
+            /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
+            width: inherit;
+            max-width: inherit; /* For Bootstrap 4 - to avoid the modal window stretching
+        full width */
+            height: inherit;
+            /* To center horizontally */
+            margin: 0 auto;
+            pointer-events: all;
+        }
+    </style>
+</head>
+<div class="d-flex flex-row-reverse" style="display:none">
+    <div id="invalidCredentialsAlert" class="alert alert-warning alert-dismissible m-3" role="alert" style="z-index:999999999;position:fixed;display:none">
+        <button id="myClose" type="button" class="close" data-dismiss="alert" data-bs-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+</div>
+    <div class="modal fade in" id="myModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="vertical-alignment-helper">
+            <div class="modal-dialog vertical-align-center">
+                <div class="modal-content">
+                    <div class="modal-body card card-container">
+                        <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+                        <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+                        <p id="profile-name" class="profile-name-card link-secondary">Alumni Login</p>
+                        <form id="alumni-login-form" novalidate class="needs-validation form-signin">
+                            <div class="col-md-12 mt-2">
+                                <div class="form-group mx-5">
+                                    <div class="input-group">
+                                        @Html.EditorFor(model => model.email, new { htmlAttributes = new { required = "required", @class = "form-control", @id = "email", @name = "email", @maxlength = "50", @placeholder = "Email Address" } })
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.email, "", new { @class = "valid-feedback text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group mx-5">
+                                    <div class="input-group">
+
+                                        @Html.EditorFor(model => model.password, new { htmlAttributes = new { @placeholder = "Password", @class = "form-control", required = "required", @maxlength = "50", @id = "password", @name = "password", @type = "password" } })
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                                </div>
+                                <div id="remember" class="checkbox mx-5" style="font-size:12px">
+                                    <label>
+                                        <input type="checkbox" value="remember-me"> Remember me
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group mx-5">
+                                    <button id="alumni-login-button" class="sppb-btn sppb-btn-primary sppb-btn-rounded" type="submit">Login</button>
+                                    <a href="#" class="forgot-password" style="font-size:12px">
+                                        Forgot the password?
+                                    </a>
+                                </div>
+                            </div>
+
+
+                        </form><!-- /form -->
+                        <!-- /container -->
+                        <!--<div class="card">
+                        <center><div class="card-header link-secondary"><h4>Admin Login</h4></div></center>
+
+                        <form action="/home/redirectDashboard" id="admin-login-form" class="needs-validation card-body" method="post" novalidate>
+
+                            <div class="col">
+                                <div class="form-group mx-5">
+                                    <label for="email" class="control-label secondary-color">Email </label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <span class="fa fa-envelope"></span>
+                                            </span>
+                                        </div>
+                                        <input type="email" id="email" class="form-control" name="email" required autofocus>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group mx-5">
+                                    <label for="password" class="control-label secondary-colort">Password </label>                                        <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <span class="fa fa-lock"></span>
+                                            </span>
+                                        </div>
+                                        <input type="password" id="password_hash" class="form-control" name="password_hash" required autofocus>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-md-4 mx-5">
+                                <button id="admin-login-button" type="submit" class="sppb-btn sppb-btn-primary sppb-btn-rounded px-5">Login</button>
+                            </div>
+                        </form>-->
+                        @*<form action="/Home/redirectDashboard" method="post">
+                                <div class="form-group row mb-2">
+                                    <label for="email_address" class="col-md-4 col-form-label text-md-right">Email </label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="email" class="form-control" name="email" required autofocus>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-2">
+                                    <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
+                                    <div class="col-md-6">
+                                        <input type="password" id="password_hash" class="form-control" name="password_hash" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-2">
+                                    <div class="col-md-6 offset-md-4">
+                                        <button type="submit" class="btn btn-secondary px-4">
+                                            Login
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>*@
+
+                        <!--</div>
+                            </div>
+                        </div>-->
+                        @*<form id="alumni-login-form" class="needs-validation" novalidate>
+
+                                <div class="col-md-12">
+                                    <div class="form-group mx-5">
+                                        @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label secondary-color" })
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <span class="fa fa-envelope"></span>
+                                                </span>
+                                            </div>
+
+                                            @Html.EditorFor(model => model.email, new { htmlAttributes = new { required = "required", @class = "form-control wrap", @id = "email", @name = "email", @maxlength = "50" } })
+                                        </div>
+                                        @Html.ValidationMessageFor(model => model.email, "", new { @class = "valid-feedback text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group mx-5">
+                                        @Html.LabelFor(model => model.password_hash, htmlAttributes: new { @class = "control-label secondary-color" })
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <span class="fa fa-lock"></span>
+                                                </span>
+                                            </div>
+                                            @Html.EditorFor(model => model.password_hash, new { htmlAttributes = new { @class = "form-control", required = "required", @maxlength = "50", @id = "password", @name = "password", @type = "password" } })
+                                        </div>
+                                        @Html.ValidationMessageFor(model => model.password_hash, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mx-5">
+                                    <button id="alumni-login-button" type="submit" class="sppb-btn  sppb-btn-primary sppb-btn-rounded modal-link px-5">Login</button>
+                                </div>
+                            </form>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <body>
+        <header id="sp-header">
+            <div class="container">
+                <div class="row">
+                    <div id="sp-logo" class="col-xs-8 col-sm-5 col-md-5">
+                        <div class="sp-column ">
+                            <h1 class="logo">
+                                <a href="/">
+                                    <img class="sp-retina-logo logo" src="~/Content/images/icon/fui-png.png" alt="FUI Alumni Portal">
+                                </a>
+                            </h1>
+                        </div>
+                    </div>
+                    @if (!Url.Action().ToLower().Equals("/home/login"))
+                    {
+                        <div id="sp-menu" class="col-xs-4 col-sm-7 col-md-7">
+                            <div class="sp-column ">
+                                <div class='sp-megamenu-wrapper'>
+                                    <a id="offcanvas-toggler" class="visible-sm visible-xs" href="#"><i class="fa fa-bars"></i></a>
+                                    <ul class="sp-megamenu-parent menu-fade hidden-sm hidden-xs">
+
+                                        <li class="sp-menu-item current-item">
+
+                                            <a href="/members">
+                                                <i class="fa fa-briefcase" aria-hidden="true"></i> Placement Opportunities
+                                            </a>
+                                        </li>
+
+                                        <li class="sp-menu-item current-item">
+
+                                            <a href="/members/upcoming_events">
+                                                <i class="fa fa-calendar-check-o" aria-hidden="true"></i> Upcoming Events
+                                            </a>
+                                        </li>
+
+                                        <li class="sp-menu-item current-item">
+
+                                            <a href="/members/register">
+                                                <i class="fa fa-institution"></i> Login/Register
+                                            </a>
+                                        </li>
+
+
+
+                                        @*<li class="sp-menu-item sp-has-child"><a href="#">My Network</a><div class="sp-dropdown sp-dropdown-main sp-menu-right" style="width: 320px;"><div class="sp-dropdown-inner"><ul class="sp-dropdown-items"><li class="sp-menu-item"></li><li class="sp-menu-item"><a href="#">Latest Job Offers</a></li></ul></div></div></li>
+                                        <li class="sp-menu-item sp-has-child"><a href="#">Our Community</a><div class="sp-dropdown sp-dropdown-main sp-menu-right" style="width: 320px;"><div class="sp-dropdown-inner"><ul class="sp-dropdown-items"><li class="sp-menu-item"><a href="http://admissions.fui.edu.pk">Continuing Education </a></li></ul></div></div></li>
+                                        <li class="sp-menu-item sp-has-child"><a href="">About</a><div class="sp-dropdown sp-dropdown-main sp-menu-right" style="width: 320px;"><div class="sp-dropdown-inner"><ul class="sp-dropdown-items"><li class="sp-menu-item"><a href="http://fui.edu.pk/index.php/aboutus/rectors-mssg">Rector Message</a></li><li class="sp-menu-item"><a href="#">About FUI</a></li><li class="sp-menu-item"><a href="#">Contact Us</a></li></ul></div></div></li>
+                                        <li class="sp-menu-item">
+
+
+
+                                        </li>*@
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+        </header>
+
+
+        <!--<header class="cd-main-header js-cd-main-header">
+    <div class="cd-logo-wrapper">
+        <a href="#0" class="cd-logo"><img src="\Content\Images\ICON\FUI-PNG.pngk" alt="FUI Alumni Portal"></a>
+    </div>
+
+    <div class="cd-search js-cd-search">
+        <form>
+            <input class="reset" type="search" placeholder="Search...">
+        </form>
+    </div>
+
+    <button class="reset cd-nav-trigger js-cd-nav-trigger" aria-label="Toggle menu"><span></span></button>
+
+    <ul class="cd-nav__list js-cd-nav__list">-->
+        @*<li class="cd-nav__item"><a href="#0">Tour</a></li>
+        <li class="cd-nav__item"><a href="#0">Support</a></li>*@
+        <!--<li class="cd-nav__item cd-nav__item--has-children cd-nav__item--account js-cd-item--has-children">
+                <a href="#0">
+                    <img src="~/Content/Images/user-avatar.png" alt="avatar">
+                    <span>Account</span>
+                </a>
+
+                <ul class="cd-nav__sub-list">
+                    <li class="cd-nav__sub-item"><a href="#0">My Account</a></li>
+                    <li class="cd-nav__sub-item"><a href="#0">Edit Account</a></li>
+                    <li class="cd-nav__sub-item"><a href="#0">Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+    </header>-->
+        <!-- .cd-main-header -->
+
+        <main class="">
+            <!--<nav class="cd-side-nav js-cd-side-nav">
+        <ul class="cd-side__list js-cd-side__list">
+            <li class="cd-side__label"><span>Main</span></li>-->
+            @*<li class="cd-side__item cd-side__item--has-children cd-side__item--overview js-cd-item--has-children">
+                <a href="#0">Overview</a>
+
+                <ul class="cd-side__sub-list">
+                    <li class="cd-side__sub-item"><a href="#0">All Data</a></li>
+                    <li class="cd-side__sub-item"><a href="#0">Category 1</a></li>
+                    <li class="cd-side__sub-item"><a href="#0">Category 2</a></li>
+                </ul>
+            </li>*@
+
+            <!--<li class="cd-side__item cd-side__item--has-children cd-side__item--notifications cd-side__item--selected js-cd-item--has-children">
+            <a href="#0">Notifications<span class="cd-count">3</span></a>
+
+            <ul class="cd-side__sub-list">
+                <li class="cd-side__sub-item"><a aria-current="page" href="#0">All Notifications</a></li>
+                <li class="cd-side__sub-item"><a href="#0">Friends</a></li>
+                <li class="cd-side__sub-item"><a href="#0">Other</a></li>
+            </ul>
+        </li>-->
+            @*<li class="cd-side__item cd-side__item--has-children cd-side__item--comments js-cd-item--has-children">
+                <a href="#0">Comments</a>
+
+                <ul class="cd-side__sub-list">
+                    <li class="cd-side__sub-item"><a href="#0">All Comments</a></li>
+                    <li class="cd-side__sub-item"><a href="#0">Edit Comment</a></li>
+                    <li class="cd-side__sub-item"><a href="#0">Delete Comment</a></li>
+                </ul>
+            </li>*@
+            <!--</ul>
+
+        <ul class="cd-side__list js-cd-side__list">
+            <li class="cd-side__label"><span>Secondary</span></li>-->
+            @*<li class="cd-side__item cd-side__item--has-children cd-side__item--bookmarks js-cd-item--has-children">
+                <a href="#0">Bookmarks</a>
+
+                <ul class="cd-side__sub-list">
+                    <li class="cd-side__sub-item"><a href="#0">All Bookmarks</a></li>
+                    <li class="cd-side__sub-item"><a href="#0">Edit Bookmark</a></li>
+                    <li class="cd-side__sub-item"><a href="#0">Import Bookmark</a></li>
+                </ul>
+            </li>*@
+
+            @*<li class="cd-side__item cd-side__item--has-children cd-side__item--images js-cd-item--has-children">
+                <a href="#0">Images</a>
+
+                <ul class="cd-side__sub-list">
+                    <li class="cd-side__sub-item"><a href="#0">All Images</a></li>
+                    <li class="cd-side__sub-item"><a href="#0">Edit Image</a></li>
+                </ul>
+            </li>*@
+
+            <!--<li class="cd-side__item cd-side__item--has-children cd-side__item--users js-cd-item--has-children">
+                <a href="#">Jobs</a>
+
+                <ul class="cd-side__sub-list">
+                    <li class="cd-side__sub-item"><a href="/members">All Jobs</a></li>
+                    <li class="cd-side__sub-item"><a href="/members">My Jobs</a></li>
+                    <li class="cd-side__sub-item"><a href="/job_post/create">Add Job</a></li>
+                </ul>
+            </li>
+        </ul>-->
+            @*<ul class="cd-side__list js-cd-side__list">
+                <li class="cd-side__label"><span>Action</span></li>
+                <li class="cd-side__btn"><button class="reset" href="#0">+ Button</button></li>
+            </ul>*@
+            <!--</nav>-->
+
+
+
+            @RenderBody()
+        </main>
+        @if (Url.Action().ToLower().Equals("/home/login"))
+        {
+            <div class="container">
+                <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 border-top">
+                    <div class="col-md-4 d-flex align-items-center">
+                        <div class="me-2 mb-md-0 text-muted text-decoration-none">
+                            <img src="~/Content/Images/ICON/FUI-PNG-white.png" width="50" height="40">
+                        </div>
+                        <div class="mb-md-0" style="color:#ffffff;">
+                            Copyright 2023. All Rights Reserved.
+                            <p> Designed by: IT/MIS</p>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        }
+
+        else
+        {
+            <footer id="sp-footer">
+                <div class="container">
+                    <div class="row">
+                        <div id="sp-footer1" class="col-sm-12 col-md-12">
+                            <div class="sp-column ">
+                                <footer class="d-flex flex-wrap justify-content-between align-items-center">
+                                    <div class="col-md-4 d-flex align-items-center">
+                                        <div class="me-2 mb-md-0 text-muted text-decoration-none">
+                                            <img src="~/Content/Images/ICON/FUI-PNG-white.png" width="50" height="40">
+                                        </div>
+                                        <div class="mb-md-0" style="color:#ffffff;">
+                                            Copyright 2023. All Rights Reserved.
+                                            <p> Designed by: IT/MIS</p>
+                                        </div>
+                                    </div>
+                                </footer>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        }
+
+
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.js"></script>
+        <script type='text/javascript' src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
+
+        <script type="text/javascript">
+
+            $("#campus").change(function () {
+                $.get("/members/GetCategoryPrograms", { category: $("#category_studied").val(), campus: $("#campus").val() }, function (data) {
+                    $("#program_studied").empty();
+                    $.each(data, function (index, row) {
+                        if (index == 1) {
+                            $("#program_studied").append("<option selected='selected' value='" + row + "'>" + row + "</option>")
+                        }
+                        else if (index == 0) {
+                            $("#program_studied").append("<option disabled='disabled' value='" + row + "'>" + row + "</option>")
+                        }
+                        else {
+                            $("#program_studied").append("<option  value='" + row + "'>" + row + "</option>")
+
+                        }
+                    });
+                });
+            });
+
+            $("#category_studied").change(function () {
+                $.get("/members/GetCategoryPrograms", { category: $("#category_studied").val(), campus: $("#campus").val() }, function (data) {
+                    $("#program_studied").empty();
+                    $.each(data, function (index, row) {
+                        if (index == 0) {
+                            $("#program_studied").append("<option disabled='disabled' selected='selected' value='" + row + "'>" + row + "</option>")
+                        }
+                        else {
+                            $("#program_studied").append("<option  value='" + row + "'>" + row + "</option>")
+
+                        }
+                    });
+                });
+            })
+
+            $('.btn-expand-collapse').click(function (e) {
+                $('.navbar-primary').toggleClass('collapsed');
+            });
+
+            /*   for allow only letters*/
+            var name = document.getElementById('name');
+            console.log(name);
+
+            function isProgramValid(value) {
+                if (value == "Choose Program") {
+                    return false;
+                }
+                else {
+                    return true;
+                }
+            }
+
+            function isValid(value) {
+                var fieldNum = /^[a-zA-Z ]*$/;
+
+                if ((value.match(fieldNum))) {
+                    return true
+                }
+                else {
+                    return false
+                }
+
+            }
+
+            $('#name').keypress(function (e) {
+                var regex = new RegExp("^[a-zA-Z ]*$");
+                var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+                if (regex.test(str)) {
+                    return true;
+                }
+                else {
+                    e.preventDefault();
+
+                    return false;
+                }
+            });
+
+
+            $(document).ready(function () {
+
+                $('#alumni-login-form').on('keyup keypress', function (e) {
+                    var keyCode = e.keyCode || e.which;
+                    if (keyCode === 13) {
+                        e.preventDefault();
+                        return false;
+                    }
+                });
+
+                $('#alumni-register-form').on('keyup keypress', function (e) {
+                    var keyCode = e.keyCode || e.which;
+                    if (keyCode === 13) {
+                        e.preventDefault();
+                        return false;
+                    }
+                });
+
+                $('#alumni-register-form').bootstrapValidator({
+                    // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+
+                    fields: {
+                        name: {
+                            validators: {
+                                stringLength: {
+                                    min: 3,
+                                    max: 50,
+                                    message: 'Name must be between 3 to 50 characters'
+                                },
+                                notEmpty: {
+                                    message: 'This field is required'
+                                },
+                                callback: {
+                                    message: 'Please enter alphabets',
+                                    callback: function (value, validator, $field) {
+                                        if (!isValid(value)) {
+                                            return {
+                                                valid: false,
+                                            };
+                                        }
+                                        else {
+                                            return {
+                                                valid: true,
+                                            };
+                                        }
+                                    }
+                                }
+                            },
+
+                        },
+                        email: {
+                            validators: {
+                                stringLength: {
+                                    min: 10,
+                                    max: 50,
+                                    message: 'Email must be between 10 to 50 characters'
+                                },
+                                notEmpty: {
+                                    message: 'This field is required'
+                                },
+                                emailAddress: {
+                                    message: 'Email address is invalid'
+                                }
+                            }
+                        },
+                        mobile_no: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'This field is required'
+                                },
+                                phone: {
+                                    country: 'PK',
+                                    message: 'Mobile Number is invalid'
+                                }
+                            }
+                        },
+                        category_studied: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'This field is required'
+                                }
+                            }
+                        },
+
+                        program_studied: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'This field is required'
+                                },
+                                callback: {
+                                    message: 'Not a valid Program',
+                                    callback: function (value, validator, $field) {
+                                        if (!isProgramValid(value)) {
+                                            return {
+                                                valid: false,
+                                            };
+                                        }
+                                        else {
+                                            return {
+                                                valid: true,
+                                            };
+                                        }
+                                    }
+                                }
+                            }
+                        },
+
+                        campus: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'This field is required'
+                                }
+                            }
+                        },
+                        degree_completion_date: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'This field is required'
+                                }
+                            }
+                        },
+                        username: {
+                            validators: {
+                                stringLength: {
+                                    min: 5,
+                                    max: 25,
+                                    message: 'Username must be between 5 to 25 characters'
+                                },
+                                notEmpty: {
+                                    message: 'This field is required'
+                                }
+                            }
+                        },
+                        designation: {
+                            validators: {
+
+                                notEmpty: {
+                                    message: 'This field is required'
+                                }
+                            }
+                        },
+                        registration_no: {
+
+                            validators: {
+                                stringLength: {
+                                    min: 8,
+                                    max: 25,
+                                    message: 'Registration Number must be between 8 to 25 characters'
+                                }
+                            }
+                        },
+
+
+                        org_comp_working_in: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'This field is required'
+                                }
+                            }
+                        },
+
+                        password: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'This field is required'
+                                }
+                            }
+                        },
+                        confirm_password: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'This field is required'
+                                },
+                                identical: {
+                                    field: 'password',
+                                    message: 'The password and confirm password fields are not the same'
+                                }
+                            }
+                        },
+
+
+                    }
+                }).on('success.form.bv', function (e) {
+                    // Prevent form submission
+                    e.preventDefault();
+                    var valdata = $("#alumni-register-form").serialize();
+                    //to get alert popup
+
+                    $.ajax({
+                        url: "/members/Create",
+                        type: "POST",
+                        dataType: 'json',
+                        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                        data: valdata,
+                        success: function (response) {
+                            if (response.success) {
+                                $("#alumni-register-form").data('bootstrapValidator').resetForm();
+                                $("#alumni-register-form")[0].reset();
+                                $("#invalidCredentialsAlert").text(response.responseText);
+                                $("#invalidCredentialsAlert").fadeTo(1000, 1000).fadeIn(1000, function () {
+                                    $(".alert").fadeOut(1000);
+                                });
+                            }
+                            else {
+                                if (JSON.stringify(response.responseText.Data)) {
+                                    $("#invalidCredentialsAlert").text(JSON.stringify(response.responseText.Data));
+                                    alert(JSON.stringify(response.responseText.Data));
+                                    $("#invalidCredentialsAlert").fadeTo(2000, 2000).fadeIn(1000, function () {
+                                        $(".alert").fadeOut(1000);
+                                    });
+                                }
+                                else {
+                                    $("#invalidCredentialsAlert").text(JSON.stringify(response.responseText));
+                                    alert(JSON.stringify(response.responseText));
+                                    $("#invalidCredentialsAlert").fadeTo(2000, 2000).fadeIn(1000, function () {
+                                        $(".alert").fadeOut(1000);
+                                    });
+                                }
+                                
+                            }
+                        },
+                        error: function (response) {
+                            alert("Error");
+                        }
+                    });
+                });
+            });
+
+
+            $(document).ready(function () {
+
+                $('#admin-login-form').bootstrapValidator({
+                    // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+
+                    fields: {
+
+                        email: {
+                            validators: {
+                                stringLength: {
+                                    min: 10,
+                                    max: 50,
+                                    message: 'Email must be between 10 to 50 characters'
+                                },
+                                notEmpty: {
+                                    message: 'This field is required'
+                                },
+                                emailAddress: {
+                                    message: 'Email address is invalid'
+                                }
+                            }
+                        },
+                        password: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'This field is required'
+                                }
+                            }
+                        }
+                    }
+                })
+            });
+
+
+            $(document).ready(function () {
+
+                $('#alumni-login-form').bootstrapValidator({
+                    // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+
+                    fields: {
+                        name: {
+                            validators: {
+                                stringLength: {
+                                    min: 3,
+                                    max: 30
+                                },
+                                notEmpty: {
+                                    message: 'This field is required'
+                                },
+                                callback: {
+                                    message: 'Please enter alphabets',
+                                    callback: function (value, validator, $field) {
+                                        if (!isValid(value)) {
+                                            return {
+                                                valid: false,
+                                            };
+                                        }
+                                        else {
+                                            return {
+                                                valid: true,
+                                            };
+                                        }
+                                    }
+                                }
+                            },
+
+                        },
+                        email: {
+                            validators: {
+                                stringLength: {
+                                    min: 10,
+                                    max: 50,
+                                    message: 'Email must be between 10 to 50 characters'
+                                },
+                                notEmpty: {
+                                    message: 'This field is required'
+                                },
+                                emailAddress: {
+                                    message: 'Email address is invalid'
+                                }
+                            }
+                        },
+                        mobile_no: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'This field is required'
+                                },
+                                phone: {
+                                    country: 'PK',
+                                    message: 'Mobile Number is invalid'
+                                }
+                            }
+                        },
+                        program_studied: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'This field is required'
+                                }
+                            }
+                        },
+                        campus: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'This field is required'
+                                }
+                            }
+                        },
+                        degree_completion_date: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'This field is required'
+                                }
+                            }
+                        },
+                        username: {
+                            validators: {
+                                stringLength: {
+                                    min: 5,
+                                    max: 25,
+                                    message: 'Username must be between 5 to 25 characters'
+                                },
+                                notEmpty: {
+                                    message: 'This field is required'
+                                }
+                            }
+                        },
+                        designation: {
+                            validators: {
+
+                                notEmpty: {
+                                    message: 'This field is required'
+                                }
+                            }
+                        },
+                        registration_no: {
+                            stringLength: {
+                                min: 8,
+                                max: 25,
+                                message: 'Registration Number must be between 5 to 25 characters'
+                            },
+                            validators: {
+                                notEmpty: {
+                                    message: 'This field is required'
+                                }
+                            }
+                        },
+
+
+                        org_comp_working_in: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'This field is required'
+                                }
+                            }
+                        },
+
+                        password: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'This field is required'
+                                }
+                            }
+                        },
+                        confirm_password: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'This field is required'
+                                },
+                                identical: {
+                                    field: 'password',
+                                    message: 'The password and confirm password fields are not the same'
+                                }
+                            }
+                        },
+
+
+                    }
+                })
+            });
+
+
+            $(document).ready(function () {
+                $("#password").on('keyup', function () {
+
+                });
+                $("#confirm_password").on('keyup', function () {
+
+                });
+
+                $("#mobile_no").inputmask({
+                    mask: '03999999999',
+                    placeholder: '',
+                    showMaskOnHover: false,
+                    showMaskOnFocus: true,
+                    onBeforePaste: function (pastedValue, opts) {
+                        var processedValue = pastedValue;
+
+                        //do something with it
+
+                        return processedValue;
+                    }
+                });
+            });
+            $(".modal-link").click(function () {
+                $('#myModal').modal('show');
+            });
+
+            $('.pop').on('click', function () {
+                $('.imagepreview').attr('src', $(this).find('img').attr('src'));
+                $('#imagemodal').modal('show');
+            });
+
+            $("#reset-button").click(function () {
+                $("#alumni-register-form").data('bootstrapValidator').resetForm();
+                $("#alumni-register-form")[0].reset();
+            });
+        </script>
+        <script type="text/javascript">
+
+
+
+
+            $(document).ready(function () {
+
+                $("#alumni-login-button").click(function (e) {
+                    e.preventDefault();
+                    //Serialize the form datas.
+                    var valdata = $("#alumni-login-form").serialize();
+                    //to get alert popup
+
+                    $.ajax({
+                        url: "/members/LoginNew",
+                        type: "POST",
+                        dataType: 'json',
+                        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                        data: valdata,
+                        success: function (response) {
+                            if (response.redirectToUrl != undefined) {
+                                window.location.href = response.redirectToUrl;
+                            }
+                            else {
+
+                                $("#invalidCredentialsAlert").text(response.responseText);
+                                $("#invalidCredentialsAlert").fadeTo(2000, 2000).fadeOut(2000, function () {
+                                    $("#invalidCredentialsAlert").fadeOut(2000);
+                                });
+                            }
+                        },
+                        error: function (response) {
+                            alert("Error");
+                        }
+                    });
+                });
+            });
+
+
+
+
+        </script>
+
+    </body>
+</html>

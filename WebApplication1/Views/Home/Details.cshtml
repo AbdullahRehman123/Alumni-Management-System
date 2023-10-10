@@ -1,0 +1,146 @@
+﻿@model WebApplication1.Models.job_post
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+@Scripts.Render("~/bundles/bootstrap")
+
+<div class="container-fluid mt-2">
+    <p>
+        @Html.ActionLink("Back", "view_job_posts", "Home")
+    </p>
+    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+        <div class="container">
+            <div class="row gy-5 gx-4">
+                <div class="col-lg-8">
+                    <div class="d-flex align-items-center mb-5">
+                        <img class="flex-shrink-0 img-fluid border rounded" src="/@Model.image_path" alt="" style="width: 80px; height: 80px;">
+                        <div class="text-start ps-4">
+                            <h3 class="mb-3">@Html.DisplayFor(model => model.title)</h3>
+                            <span class="text-truncate me-3"><i class="fa fa-map-marker text-primary me-2"></i>@Html.DisplayFor(model => model.location)</span>
+                            <span class="text-truncate me-3"><i class="fa fa-clock-o text-primary me-2"></i>@Html.DisplayFor(model => model.post_type)</span>
+                            <span class="text-truncate me-0"><i class="fa fa-money text-primary me-2"></i>@Html.DisplayFor(model => model.salary)</span>
+                        </div>
+                    </div>
+                    <div class="mb-5">
+                        <h4 class="mb-3 fw-bold">Job description</h4>
+                        <p class="text-break">@Html.DisplayFor(model => model.description)</p>
+                        <h4 class="mb-3 mt-3 fw-bold">Responsibility</h4>
+                        <p class="text-break">NA</p>
+                        @*<ul class="list-unstyled">
+                                <li><i class="fa fa-angle-right text-primary me-2"></i>Dolor justo tempor duo ipsum accusam</li>
+                                <li><i class="fa fa-angle-right text-primary me-2"></i>Elitr stet dolor vero clita labore gubergren</li>
+                                <li><i class="fa fa-angle-right text-primary me-2"></i>Rebum vero dolores dolores elitr</li>
+                                <li><i class="fa fa-angle-right text-primary me-2"></i>Est voluptua et sanctus at sanctus erat</li>
+                                <li><i class="fa fa-angle-right text-primary me-2"></i>Diam diam stet erat no est est</li>
+                            </ul>*@
+                        <h4 class="mb-3 mt-3 fw-bold">Qualifications</h4>
+                        <p class="text-break">NA</p>
+                        @*<ul class="list-unstyled">
+                                <li><i class="fa fa-angle-right text-primary me-2"></i>Dolor justo tempor duo ipsum accusam</li>
+                                <li><i class="fa fa-angle-right text-primary me-2"></i>Elitr stet dolor vero clita labore gubergren</li>
+                                <li><i class="fa fa-angle-right text-primary me-2"></i>Rebum vero dolores dolores elitr</li>
+                                <li><i class="fa fa-angle-right text-primary me-2"></i>Est voluptua et sanctus at sanctus erat</li>
+                                <li><i class="fa fa-angle-right text-primary me-2"></i>Diam diam stet erat no est est</li>
+                            </ul>*@
+                    </div>
+
+                </div>
+                <div class="col-lg-4">
+                    <div class="bg-light rounded mb-4 wow slideInUp" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: slideInUp;">
+                        <a href="#" class="pop">
+                            <img src="/@Model.image_path" />
+                        </a>
+                    </div>
+                    <div class="bg-light rounded p-5 wow slideInUp" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: slideInUp;">
+                        <h4 class="mb-4">Company Detail</h4>
+                        <p class="m-0 text-break">NA</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close btn-lg" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img src="/@Model.image_path" class="imagepreview" style="width: 100%;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr />
+
+
+    @*<div class="d-flex flex-sm-nowrap flex-md-wrap flex-lg-nowrap justify-content-center mb-3">
+
+            <div class="p-2" id="one">
+                <div class="job_details_table">
+                    <table class="table table-striped caption-top">
+                        <caption class="caption-top">Job Details</caption>
+                        <tbody>
+                            <tr class="bg-dark">
+                                <th></th>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">@Html.DisplayNameFor(model => model.title)</th>
+                                <td> @Html.DisplayFor(model => model.title)</td>
+                            </tr>
+                            <tr>
+                                <th scope="row"> @Html.DisplayNameFor(model => model.category)</th>
+                                <td> @Html.DisplayFor(model => model.category)</td>
+                            </tr>
+                            <tr>
+                                <th scope="row"> @Html.DisplayNameFor(model => model.post_type)</th>
+                                <td>@Html.DisplayFor(model => model.post_type)</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">@Html.DisplayNameFor(model => model.location)</th>
+                                <td>@Html.DisplayFor(model => model.location)</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">@Html.DisplayNameFor(model => model.description)</th>
+                                <td>@Html.DisplayFor(model => model.description)</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">@Html.DisplayNameFor(model => model.salary)</th>
+                                <td>@Html.DisplayFor(model => model.salary)</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">@Html.DisplayNameFor(model => model.tags)</th>
+                                <td>@Html.DisplayFor(model => model.tags)</td>
+                            </tr>
+                            <tr class="bg-dark">
+                                <th scope="row"></th>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="p-2">
+
+                <a href="#" class="pop">
+                    <img src="/@Model.image_path" class="img-fluid" />
+                </a>
+
+            </div>
+
+
+
+        </div>*@
+</div>
+
+
+<script src="~/Content/util.js"></script>
+<script src="~/Content/menu-aim.js"></script>
+<script src="~/Content/main.js"></script>

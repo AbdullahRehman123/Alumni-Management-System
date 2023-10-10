@@ -1,0 +1,65 @@
+﻿@model WebApplication1.Models.news
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+<div class="">
+    <h2>Details</h2>
+
+    <div>
+        <h4>news</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.news_guid)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.news_guid)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.news_title)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.news_title)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.news_date)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.news_date)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.news_details)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.news_details)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.news_image)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.news_image)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.news_id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>
+
+<script src="~/Content/util.js"></script>
+<script src="~/Content/menu-aim.js"></script>
+<script src="~/Content/main.js"></script>

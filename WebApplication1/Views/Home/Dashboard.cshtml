@@ -1,0 +1,378 @@
+﻿@using WebApplication1.Models;
+@using System.Linq;
+@model dynamic
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_AdminlayoutPage.cshtml";
+}
+
+<script src="~/Content/util.js"></script>
+<script src="~/Content/menu-aim.js"></script>
+<script src="~/Content/main.js"></script>
+<style>
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+    .flex-contianer {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    * {
+        -webkit-transition: none !important;
+        -moz-transition: none !important;
+        -o-transition: none !important;
+        transition: none !important;
+    }
+</style>
+<main class="m-5">
+
+
+   
+            
+    @if (Model.unValidatedMembersCount > 0)
+    {
+
+
+        <div class="small table-responsive mt-2">
+            <table class="table table-striped table-secondary rounded-5" id="unvalidated-alumni-table">
+                <thead>
+                    <tr>
+                        <th>
+                            Name
+                        </th>
+
+                        <th>
+                            Email
+                        </th>
+                        <th>
+                            Mobile No
+                        </th>
+                        <th>
+                            Reg No
+                        </th>
+                        <th>
+                            Campus
+                        </th>
+
+                        <th>
+                            Program Studied
+                        </th>
+
+                        <th>
+                            Org/Comp Working In
+                        </th>
+
+                        <th>
+                            Designation
+                        </th>
+
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (member item in Model.un_validated_members_list)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.name)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.mobile_no)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.registration_no)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.campus)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.program_studied)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.org_comp_working_in)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.designation)
+                            </td>
+
+
+                            <td>
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    <a class="px-1 validate_link" href="@Url.Action("validate", "home", new { id = item.member_id } )" data-toggle="tooltip" data-placement="top" title="Validate Alumni" onclick="return validate_confirmation_alert(event)">
+
+                                        <svg class="valid text-bg-success" xmlns="http://www.w3.org/2000/svg" height="1.4em" viewBox="0 0 448 512"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z" /></svg>
+                                        <style>
+                                            .valid {
+                                                fill: #ffffff;
+                                                padding-left: 2px;
+                                                padding-right: 2px;
+                                            }
+                                        </style>
+                                    </a>
+                                    <a class="px-1 reject_link" href="@Url.Action("reject", "home",new { id = item.member_id } )" data-toggle="tooltip" id="" data-placement="top" title="Reject Alumni" onclick="return reject_confirmation_alert(event)">
+
+                                        <svg class="del" xmlns="http://www.w3.org/2000/svg" height="1.6em" viewBox="0 0 448 512">
+
+
+                                            <style>
+                                                .del {
+                                                    fill: #ba1c1c
+                                                }
+                                            </style>
+                                            <path d="M32 464a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128H32zm272-256a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zM432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z" />
+                                        </svg>
+                                    </a>
+                                    <a class="px-1" data-toggle="tooltip" data-placement="top" title="Edit Alumni" href="@Url.Action("Edit", "home",new { id = item.member_id } )">
+
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="1.6em" viewBox="0 0 576 512"><path d="M402.6 83.2l90.2 90.2c3.8 3.8 3.8 10 0 13.8L274.4 405.6l-92.8 10.3c-12.4 1.4-22.9-9.1-21.5-21.5l10.3-92.8L388.8 83.2c3.8-3.8 10-3.8 13.8 0zm162-22.9l-48.8-48.8c-15.2-15.2-39.9-15.2-55.2 0l-35.4 35.4c-3.8 3.8-3.8 10 0 13.8l90.2 90.2c3.8 3.8 10 3.8 13.8 0l35.4-35.4c15.2-15.3 15.2-40 0-55.2zM384 346.2V448H64V128h229.8c3.2 0 6.2-1.3 8.5-3.5l40-40c7.6-7.6 2.2-20.5-8.5-20.5H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V306.2c0-10.7-12.9-16-20.5-8.5l-40 40c-2.2 2.3-3.5 5.3-3.5 8.5z" /></svg>
+
+                                    </a>
+                                </div>
+                                @*<div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Action
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a class="dropdown-item" href="#">
+                                                Validate
+                                                <svg class="valid" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z" /></svg>
+                                                <style>
+                                                    .valid {
+                                                        fill: #11b13f
+                                                    }
+                                                </style>
+                                            </a>
+                                            <a class="dropdown-item" href="#">
+                                                Un-validate
+                                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" /></svg>
+                                                <style>
+                                                    .valid {
+                                                        fill: #11b13f
+                                                    }
+                                                </style>
+                                            </a>
+
+
+                                            <a class="dropdown-item" href="#">
+                                                Reject
+                                                <svg class="del" xmlns="http://www.w3.org/2000/svg" height="1.3em" viewBox="0 0 448 512">
+
+
+                                                    <style>
+                                                        .del {
+                                                            fill: #ba1c1c
+                                                        }
+                                                    </style>
+                                                    <path d="M32 464a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128H32zm272-256a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zM432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z" />
+                                                </svg>
+                                            </a>
+
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="@Url.Action("Edit", "home",new { id = item.member_id } )">
+                                                Edit
+                                                <svg xmlns="http://www.w3.org/2000/svg" height="1.3em" viewBox="0 0 576 512"><path d="M402.6 83.2l90.2 90.2c3.8 3.8 3.8 10 0 13.8L274.4 405.6l-92.8 10.3c-12.4 1.4-22.9-9.1-21.5-21.5l10.3-92.8L388.8 83.2c3.8-3.8 10-3.8 13.8 0zm162-22.9l-48.8-48.8c-15.2-15.2-39.9-15.2-55.2 0l-35.4 35.4c-3.8 3.8-3.8 10 0 13.8l90.2 90.2c3.8 3.8 10 3.8 13.8 0l35.4-35.4c15.2-15.3 15.2-40 0-55.2zM384 346.2V448H64V128h229.8c3.2 0 6.2-1.3 8.5-3.5l40-40c7.6-7.6 2.2-20.5-8.5-20.5H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V306.2c0-10.7-12.9-16-20.5-8.5l-40 40c-2.2 2.3-3.5 5.3-3.5 8.5z" /></svg>
+
+                                            </a>
+                                            <a class="dropdown-item" href="@Url.Action("Details", "home",new { id = item.member_id } )">
+                                                Details
+                                                <svg class="details" xmlns="http://www.w3.org/2000/svg" height="1.3em" viewBox="0 0 576 512">
+                                                    <path d="M572.52 241.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400a144 144 0 1 1 144-144 143.93 143.93 0 0 1-144 144zm0-240a95.31 95.31 0 0 0-25.31 3.79 47.85 47.85 0 0 1-66.9 66.9A95.78 95.78 0 1 0 288 160z" />
+                                                    <style>
+                                                        .details {
+                                                            fill: #004c94
+                                                        }
+                                                    </style>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>*@
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+
+    @if (Model.validatedMembersCount > 0)
+    {
+
+
+        <div class="small table-responsive">
+            <table class="table table-sm table-striped table-success" id="validated-alumni-table">
+                <thead>
+                    <tr>
+                        <th>
+                            Name
+                        </th>
+
+                        <th>
+                            Email
+                        </th>
+                        <th>
+                            Mobile No
+                        </th>
+                        <th>
+                            Reg No
+                        </th>
+                        <th>
+                            Campus
+                        </th>
+
+                        <th>
+                            Program Studied
+                        </th>
+
+                        <th>
+                            Org/Comp Working In
+                        </th>
+
+                        <th>
+                            Designation
+                        </th>
+
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (member item in Model.validatedMembersList)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.name)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.mobile_no)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.registration_no)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.campus)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.program_studied)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.org_comp_working_in)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.designation)
+                            </td>
+
+
+                            <td>
+                                <div class="btn-group" role="group" aria-label="Basic example">
+
+                                    <a class="px-1 reject_link_new" href="@Url.Action("reject", "home",new { id = item.member_id } )" data-toggle="tooltip" data-placement="top" title="Reject Alumni">
+
+                                        <svg class="del" xmlns="http://www.w3.org/2000/svg" height="1.3em" viewBox="0 0 448 512">
+
+
+                                            <style>
+                                                .del {
+                                                    fill: #ba1c1c
+                                                }
+                                            </style>
+                                            <path d="M32 464a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128H32zm272-256a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zM432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z" />
+                                        </svg>
+                                    </a>
+
+                                    <a class="px-1" href="@Url.Action("edit", "home",new { id = item.member_id } )" data-toggle="tooltip" data-placement="top" title="Edit Alumni">
+
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="1.3em" viewBox="0 0 576 512"><path d="M402.6 83.2l90.2 90.2c3.8 3.8 3.8 10 0 13.8L274.4 405.6l-92.8 10.3c-12.4 1.4-22.9-9.1-21.5-21.5l10.3-92.8L388.8 83.2c3.8-3.8 10-3.8 13.8 0zm162-22.9l-48.8-48.8c-15.2-15.2-39.9-15.2-55.2 0l-35.4 35.4c-3.8 3.8-3.8 10 0 13.8l90.2 90.2c3.8 3.8 10 3.8 13.8 0l35.4-35.4c15.2-15.3 15.2-40 0-55.2zM384 346.2V448H64V128h229.8c3.2 0 6.2-1.3 8.5-3.5l40-40c7.6-7.6 2.2-20.5-8.5-20.5H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V306.2c0-10.7-12.9-16-20.5-8.5l-40 40c-2.2 2.3-3.5 5.3-3.5 8.5z" /></svg>
+
+                                    </a>
+                                </div>
+                                @*<div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Action
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a class="dropdown-item" href="#">
+                                                Validate
+                                                <svg class="valid" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z" /></svg>
+                                                <style>
+                                                    .valid {
+                                                        fill: #11b13f
+                                                    }
+                                                </style>
+                                            </a>
+                                            <a class="dropdown-item" href="#">
+                                                Un-validate
+                                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" /></svg>
+                                                <style>
+                                                    .valid {
+                                                        fill: #11b13f
+                                                    }
+                                                </style>
+                                            </a>
+
+
+                                            <a class="dropdown-item" href="#">
+                                                Reject
+                                                <svg class="del" xmlns="http://www.w3.org/2000/svg" height="1.3em" viewBox="0 0 448 512">
+
+
+                                                    <style>
+                                                        .del {
+                                                            fill: #ba1c1c
+                                                        }
+                                                    </style>
+                                                    <path d="M32 464a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128H32zm272-256a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zM432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z" />
+                                                </svg>
+                                            </a>
+
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="@Url.Action("Edit", "home",new { id = item.member_id } )">
+                                                Edit
+                                                <svg xmlns="http://www.w3.org/2000/svg" height="1.3em" viewBox="0 0 576 512"><path d="M402.6 83.2l90.2 90.2c3.8 3.8 3.8 10 0 13.8L274.4 405.6l-92.8 10.3c-12.4 1.4-22.9-9.1-21.5-21.5l10.3-92.8L388.8 83.2c3.8-3.8 10-3.8 13.8 0zm162-22.9l-48.8-48.8c-15.2-15.2-39.9-15.2-55.2 0l-35.4 35.4c-3.8 3.8-3.8 10 0 13.8l90.2 90.2c3.8 3.8 10 3.8 13.8 0l35.4-35.4c15.2-15.3 15.2-40 0-55.2zM384 346.2V448H64V128h229.8c3.2 0 6.2-1.3 8.5-3.5l40-40c7.6-7.6 2.2-20.5-8.5-20.5H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V306.2c0-10.7-12.9-16-20.5-8.5l-40 40c-2.2 2.3-3.5 5.3-3.5 8.5z" /></svg>
+
+                                            </a>
+                                            <a class="dropdown-item" href="@Url.Action("Details", "home",new { id = item.member_id } )">
+                                                Details
+                                                <svg class="details" xmlns="http://www.w3.org/2000/svg" height="1.3em" viewBox="0 0 576 512">
+                                                    <path d="M572.52 241.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400a144 144 0 1 1 144-144 143.93 143.93 0 0 1-144 144zm0-240a95.31 95.31 0 0 0-25.31 3.79 47.85 47.85 0 0 1-66.9 66.9A95.78 95.78 0 1 0 288 160z" />
+                                                    <style>
+                                                        .details {
+                                                            fill: #004c94
+                                                        }
+                                                    </style>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>*@
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <script>
+            var reject_link_new = document.getElementsByClassName('reject_link_new');
+            for (var i = 0; i < reject_link_new.length; i++) {
+                reject_link_new[i].addEventListener('click', function (e) {
+                    if (confirm('Are You Sure you want to reject this alumni record?')) {
+                        //window.location.href = "window-location.html"
+                        window.alert("This alumni record was rejected successfully.");
+                    } else {
+                        e.preventDefault();
+                    }
+                });
+            }
+        </script>
+    }
+
+
+</main>

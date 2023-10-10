@@ -1,0 +1,215 @@
+﻿@model WebApplication1.Models.candidate
+
+@{
+    ViewBag.Title = "Details";
+}
+<style>
+
+
+    body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        position: relative;
+    }
+
+    code {
+        font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+    }
+
+    .card-container {
+        background-color: white;
+        min-width: 150px;
+        max-width: 1200px;
+        height: auto;
+        border-radius: 14px;
+        box-shadow: 3px 2px 11px grey;
+    }
+
+
+    .profile-img {
+        margin: auto;
+        width: 100px;
+        border: solid white 4px;
+        border-radius: 50%;
+        margin-top: 15px;
+    }
+
+    .bold-text {
+        font-weight: bold;    
+        text-align: center;
+        padding: 10px 20px 0px 20px;
+    }
+
+    .normal-text {
+        font-weight: normal;
+        font-size: 0.95rem;
+        color: hsl(0, 0%, 50%);
+        text-align: center;
+        padding-bottom: 5px;
+    }
+
+    /* SOCIAL STATS */
+    .smaller-text {
+        font-weight: normal;       
+        color: hsl(0, 0%, 50%);
+        text-align: center;
+        letter-spacing: 1px;
+        padding-bottom: 20px;
+        line-height: 10px;
+    }
+
+    .social-container {
+        display: flex;
+        border-top: solid rgb(206, 206, 206) 1px;
+        border-bottom: solid rgb(206, 206, 206) 1px;
+        text-align: center;
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    .row {
+        --bs-gutter-x: 0rem !important;
+    }
+
+    .followers {
+        flex: 1;
+    }
+
+    .likes {
+        flex: 1;
+    }
+
+    .photos {
+        flex: 1;
+    }
+
+    p {
+        margin-bottom: 1rem !important;
+    }
+
+    .text-quotes blockquote {
+        position: relative;
+        margin: 0;
+        padding: 8px 0 22px 0;
+        text-indent: 36px;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 24px;
+        /* font-weight: bold; */
+        color: #686767;
+    }
+
+        .text-quotes blockquote:before,
+        .text-quotes blockquote:after {
+            position: absolute;
+            font-family: "Times New Roman", serif;
+            font-size: 60px;
+            line-height: 26px;
+            color: #7ad;
+        }
+
+        .text-quotes blockquote:before {
+            content: '\201C'; /* Left double quote */
+            left: -36px;
+            top: 8px;
+        }
+
+        .text-quotes blockquote:after {
+            content: '\201D'; /* Right double quote */
+            right: 0px;
+            bottom: 13px;
+        }
+
+    .image-quotes blockquote {
+        position: relative;
+        margin: 0;
+        padding: 8px 0 22px 0;
+        text-indent: 36px;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: bold;
+        color: #999;
+    }
+
+        .image-quotes blockquote:before,
+        .image-quotes blockquote:after {
+            display: block;
+            position: absolute;
+            width: 27px;
+            height: 21px;
+        }
+
+        .image-quotes blockquote:before {
+            content: url(http://www.forestpath.org/test/misc/double-quote-left-blue.png);
+            left: -35px;
+            top: 0;
+        }
+
+        .image-quotes blockquote:after {
+            content: url(http://www.forestpath.org/test/misc/double-quote-right-blue.png);
+            right: 35px;
+            bottom: 0;
+        }
+
+    body {
+        font-family: Poppins, sans-serif;
+    }
+</style>
+<center>
+    <div class="card-container mb-4">
+        <header>
+            <img class="profile-img" src=@Model.image />
+
+        </header>
+        <h5>
+            @Html.DisplayFor(model => model.name)
+        </h5>
+        <div class="social-container row">
+
+            <div class="followers">
+                <h5 class="bold-text">@Html.DisplayFor(model => model.grad_dept)</h5>
+                <h6 class="smaller-text">Department</h6>
+            </div>
+            <div class="likes">
+                <h5 class="bold-text">@Html.DisplayFor(model => model.grad_year)</h5>
+                <h6 class="smaller-text">Graduation Year</h6>
+            </div>
+            <div class="photos">
+                <h5 class="bold-text">@Html.DisplayFor(model => model.indust_org_working)</h5>
+                <h6 class="smaller-text">Current Industry Working</h6>
+            </div>
+            <div class="photos">
+                <h5 class="bold-text">@Html.DisplayFor(model => model.exper_years) Years</h5>
+                <h6 class="smaller-text">Experience</h6>
+            </div>
+            <div class="photos">
+                <h5 class="bold-text">@Html.DisplayFor(model => model.town_city_province)</h5>
+                <h6 class="smaller-text">City</h6>
+            </div>
+        </div>
+
+        <div class="social-container">
+            <div class="photos">
+                <h1 class="bold-text">Message To Voter</h1>
+                <div class="content text-quotes">
+                    <blockquote><p style="font-size:0.9rem;word-wrap:break-word">@Html.DisplayFor(model => model.message_to_voter)</p></blockquote>
+                </div>
+                <blockquote></blockquote>
+            </div>
+        </div>
+
+        <div class="social-container row">
+            <div class="photos">
+                <h1 class="bold-text" style="text-align:left">Education</h1>
+                <p style="font-size:0.8rem;text-align:left;padding-left:20px;color:#686767;word-wrap:break-word">@Html.DisplayFor(model => model.education)</p>
+            </div>
+            <div class="photos">
+                <h1 class="bold-text" style="text-align:left">Details of Industrial Experience</h1>
+                <p style="font-size:0.8rem;text-align:left;padding-left:20px;color:#686767;word-wrap:break-word">@Html.DisplayFor(model => model.experience_details)</p>
+            </div>
+        </div>
+    </div>
+</center>

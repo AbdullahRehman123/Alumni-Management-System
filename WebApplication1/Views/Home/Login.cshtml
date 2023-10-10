@@ -1,0 +1,132 @@
+﻿@using System.Configuration;
+@model WebApplication1.Models.alumni_admin
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_RegisterAlumniLayoutPage.cshtml";
+}
+
+@Scripts.Render("~/bundles/bootstrap")
+
+<style>
+    body {
+        background-image: url('/Content/Images/FUI-bg.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+</style>
+<div class="">
+    <main class="login-form">
+        
+        <div class="cotainer" style="margin-bottom:20px">
+            <div class="row justify-content-center">
+                <div class="col-md-4">
+                    <div class="container">
+                        <div class="card card-container">
+
+                            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+                            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+                            <p id="profile-name" class="profile-name-card link-secondary">Admin Login</p>
+                            <form action="/home/redirectDashboard" id="admin-login-form" method="post" novalidate class="needs-validation form-signin">
+                                <span id="reauth-email" class="reauth-email"></span>
+                                <input type="email" id="email" name="email" class="form-control" placeholder="Email address" required autofocus>
+                                <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+                                @{
+                                    string configvalue1 = ConfigurationManager.AppSettings["campus_list"];
+                                    string[] values = configvalue1.Split(',').Select(sValue => sValue.Trim()).ToArray();
+                                    List<SelectListItem> campuses = new List<SelectListItem>();
+                                    for (int i = 0; i < values.Length; i++)
+                                    {
+                                        if (i == 0)
+                                        {
+                                            campuses.Add(new SelectListItem { Text = values[i], Selected = true, Disabled = true });
+                                        }
+                                        else
+                                        {
+                                            campuses.Add(new SelectListItem { Text = values[i], Value = values[i] });
+                                        }
+                                    }
+                                }
+
+                                
+                                        @Html.DropDownListFor(model => model.campus, campuses, new { @class = "form-control", @style="height:100%;font-size:1.2rem" })
+                                      
+                                <div id="remember" class="checkbox" style="font-size:12px">
+                                    <label>
+                                        <input type="checkbox" value="remember-me"> Remember me
+                                    </label>
+                                </div>
+                                <button id="admin-login-btn" class="sppb-btn sppb-btn-primary sppb-btn-rounded" type="submit">Login</button>
+                            </form><!-- /form -->
+                            <a href="#" class="forgot-password" style="font-size:12px">
+                                Forgot the password?
+                            </a>
+                        </div><!-- /card-container -->
+                    </div><!-- /container -->
+                    <!--<div class="card">
+                        <center><div class="card-header link-secondary"><h4>Admin Login</h4></div></center>
+
+                        <form action="/home/redirectDashboard" id="admin-login-form" class="needs-validation card-body" method="post" novalidate>
+
+                            <div class="col">
+                                <div class="form-group mx-5">
+                                    <label for="email" class="control-label secondary-color">Email </label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <span class="fa fa-envelope"></span>
+                                            </span>
+                                        </div>
+                                        <input type="email" id="email" class="form-control" name="email" required autofocus>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group mx-5">
+                                    <label for="password" class="control-label secondary-colort">Password </label>                                        <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <span class="fa fa-lock"></span>
+                                            </span>
+                                        </div>
+                                        <input type="password" id="password_hash" class="form-control" name="password_hash" required autofocus>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-md-4 mx-5">
+                                <button id="admin-login-button" type="submit" class="sppb-btn sppb-btn-primary sppb-btn-rounded px-5">Login</button>
+                            </div>
+                        </form>-->
+                    @*<form action="/Home/redirectDashboard" method="post">
+                            <div class="form-group row mb-2">
+                                <label for="email_address" class="col-md-4 col-form-label text-md-right">Email </label>
+                                <div class="col-md-6">
+                                    <input type="text" id="email" class="form-control" name="email" required autofocus>
+                                </div>
+                            </div>
+
+                            <div class="form-group row mb-2">
+                                <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
+                                <div class="col-md-6">
+                                    <input type="password" id="password_hash" class="form-control" name="password_hash" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group row mb-2">
+                                <div class="col-md-6 offset-md-4">
+                                    <button type="submit" class="btn btn-secondary px-4">
+                                        Login
+                                    </button>
+                                </div>
+                            </div>
+                        </form>*@
+
+                    <!--</div>
+                        </div>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
