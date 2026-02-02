@@ -1,0 +1,26 @@
+# ASP.NET language detection for GitHub
+# This tells GitHub to recognize ASP.NET files correctly
+
+# Treat .cshtml files as C# instead of HTML
+*.cshtml linguist-language=C#
+
+# Ensure C# files are detected
+*.cs linguist-detectable=true
+
+# Mark static content appropriately
+*.html linguist-vendored=false
+*.css linguist-vendored=false
+*.js linguist-vendored=false
+
+# Exclude generated files from language stats (if any)
+# Uncomment and adjust paths as needed:
+# **/obj/** linguist-generated=true
+# **/bin/** linguist-generated=true
+# packages/** linguist-vendored=true
+
+# Ensure ASP.NET project files are detected
+*.csproj linguist-detectable=true
+*.sln linguist-detectable=true
+
+# Documentation
+*.md linguist-documentation=true
